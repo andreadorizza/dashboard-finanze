@@ -38,11 +38,35 @@ Se hai già aggiunto il plugin su claude.ai, Claude Code lo ha già. Altrimenti,
 
 Poi apri `/plugin`, vai su **Marketplaces**, scegli `dashboard-finanze` e attiva **Enable auto-update**, così ricevi gli aggiornamenti.
 
-### Altri agenti
+### Altri agenti: Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode…
 
-```
-npx skills add andreadorizza/dashboard-finanze
-```
+La skill è una normale cartella con un `SKILL.md`, quindi funziona con ogni agente che legge le skill. La installi con [skills](https://github.com/vercel-labs/skills), un programma che la copia nella cartella giusta per il tuo agente.
+
+Ti servono [Node.js](https://nodejs.org) 22 o più recente, per installarla, e Python 3.10 o più recente, per i conti.
+
+1. Apri il terminale nella cartella in cui vuoi tenere i tuoi conti.
+2. Lancia questo comando. Ti chiede in quale agente installarla:
+
+   ```
+   npx skills add andreadorizza/dashboard-finanze
+   ```
+
+   Per scegliere tu l'agente, senza domande, aggiungi `-a` con il suo nome e `-y`:
+
+   | Agente | Comando |
+   |---|---|
+   | Codex | `npx skills add andreadorizza/dashboard-finanze -a codex -y` |
+   | Cursor | `npx skills add andreadorizza/dashboard-finanze -a cursor -y` |
+   | Gemini CLI | `npx skills add andreadorizza/dashboard-finanze -a gemini-cli -y` |
+   | GitHub Copilot | `npx skills add andreadorizza/dashboard-finanze -a github-copilot -y` |
+   | OpenCode | `npx skills add andreadorizza/dashboard-finanze -a opencode -y` |
+
+   Gli altri nomi sono nell'[elenco degli agenti](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). Con `-g` la skill vale in tutte le cartelle, non solo in questa.
+3. Apri l'agente nella stessa cartella e scrivi: "Usa la skill dashboard-finanze: voglio una dashboard dei miei conti. Non sono tecnico, guidami tu."
+
+Fuori da Claude la dashboard è una pagina web che apri nel browser.
+
+Questa copia non si aggiorna da sola. Per avere la versione nuova, nella stessa cartella lancia `npx skills update -y`.
 
 ## Usala
 
