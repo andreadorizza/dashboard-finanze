@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beancount
+      - name: Demo reconciles end to end
+        run: tools/test-demo.sh
+      - name: Manifests are valid JSON with the same name
+        run: |
+          python3 - <<'PY'
+          import json
+          plugin = json.load(open(".claude-plugin/plugin.json"))
+          market = json.load(open(".claude-plugin/marketplace.json"))
+          entry = market["plugins"][0]
+          assert entry["name"] == plugin["name"], "entry name and plugin.json name differ"
+          assert "version" not in entry, "set version in plugin.json only"
+          print("manifests OK, version", plugin["version"])
+          PY
+      - run: tools/build-zip.sh

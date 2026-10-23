@@ -1,0 +1,127 @@
+date,kind,symbol,quantity,amount,currency,description
+2024-01-03,deposit,,,600.00,EUR,Deposito
+2024-01-03,buy,VWCE,5.6807,-600.01,EUR,Piano di accumulo
+2024-01-31,interest,,,0.94,EUR,Interessi
+2024-02-03,deposit,,,600.00,EUR,Deposito
+2024-02-03,buy,VWCE,5.6440,-600.00,EUR,Piano di accumulo
+2024-02-29,interest,,,0.94,EUR,Interessi
+2024-03-03,deposit,,,600.00,EUR,Deposito
+2024-03-03,buy,VWCE,5.6188,-600.00,EUR,Piano di accumulo
+2024-03-28,deposit,,,2500.00,EUR,Deposito
+2024-03-31,interest,,,8.76,EUR,Interessi
+2024-03-31,position,VWCE,136.9435,,EUR,
+2024-03-31,cash,,,2810.63,EUR,
+2024-04-03,deposit,,,600.00,EUR,Deposito
+2024-04-03,buy,VWCE,5.5238,-600.00,EUR,Piano di accumulo
+2024-04-30,interest,,,8.78,EUR,Interessi
+2024-05-03,deposit,,,600.00,EUR,Deposito
+2024-05-03,buy,VWCE,5.5378,-600.00,EUR,Piano di accumulo
+2024-05-31,interest,,,8.81,EUR,Interessi
+2024-06-03,deposit,,,600.00,EUR,Deposito
+2024-06-03,buy,VWCE,5.6156,-600.00,EUR,Piano di accumulo
+2024-06-30,interest,,,8.84,EUR,Interessi
+2024-06-30,position,VWCE,153.6207,,EUR,
+2024-06-30,cash,,,2837.06,EUR,
+2024-07-03,deposit,,,600.00,EUR,Deposito
+2024-07-03,buy,VWCE,5.5864,-600.00,EUR,Piano di accumulo
+2024-07-31,interest,,,8.87,EUR,Interessi
+2024-08-03,deposit,,,600.00,EUR,Deposito
+2024-08-03,buy,VWCE,5.6614,-600.00,EUR,Piano di accumulo
+2024-08-31,interest,,,8.89,EUR,Interessi
+2024-09-03,deposit,,,600.00,EUR,Deposito
+2024-09-03,buy,VWCE,5.8564,-600.00,EUR,Piano di accumulo
+2024-09-30,interest,,,8.92,EUR,Interessi
+2024-09-30,position,VWCE,170.7249,,EUR,
+2024-09-30,cash,,,2863.74,EUR,
+2024-10-03,deposit,,,600.00,EUR,Deposito
+2024-10-03,buy,VWCE,5.9025,-600.00,EUR,Piano di accumulo
+2024-10-31,interest,,,8.95,EUR,Interessi
+2024-11-03,deposit,,,600.00,EUR,Deposito
+2024-11-03,buy,VWCE,5.7323,-600.00,EUR,Piano di accumulo
+2024-11-30,interest,,,8.98,EUR,Interessi
+2024-12-03,deposit,,,600.00,EUR,Deposito
+2024-12-03,buy,VWCE,5.6796,-600.00,EUR,Piano di accumulo
+2024-12-31,interest,,,9.01,EUR,Interessi
+2024-12-31,position,VWCE,188.0393,,EUR,
+2024-12-31,cash,,,2890.68,EUR,
+2025-01-03,deposit,,,800.00,EUR,Deposito
+2025-01-03,buy,VWCE,7.8368,-800.00,EUR,Piano di accumulo
+2025-01-31,interest,,,7.23,EUR,Interessi
+2025-02-03,deposit,,,800.00,EUR,Deposito
+2025-02-03,buy,VWCE,7.7737,-800.00,EUR,Piano di accumulo
+2025-02-28,interest,,,7.24,EUR,Interessi
+2025-03-03,deposit,,,800.00,EUR,Deposito
+2025-03-03,buy,VWCE,7.5002,-800.00,EUR,Piano di accumulo
+2025-03-31,interest,,,7.26,EUR,Interessi
+2025-03-31,position,VWCE,211.1500,,EUR,
+2025-03-31,cash,,,2912.41,EUR,
+2025-04-03,deposit,,,800.00,EUR,Deposito
+2025-04-03,buy,VWCE,7.7415,-800.00,EUR,Piano di accumulo
+2025-04-30,interest,,,7.28,EUR,Interessi
+2025-05-03,deposit,,,800.00,EUR,Deposito
+2025-05-03,buy,VWCE,8.0092,-800.00,EUR,Piano di accumulo
+2025-05-31,interest,,,7.30,EUR,Interessi
+2025-06-03,deposit,,,800.00,EUR,Deposito
+2025-06-03,buy,VWCE,7.7701,-800.00,EUR,Piano di accumulo
+2025-06-30,interest,,,7.32,EUR,Interessi
+2025-06-30,position,VWCE,234.6708,,EUR,
+2025-06-30,cash,,,2934.31,EUR,
+2025-07-03,deposit,,,800.00,EUR,Deposito
+2025-07-03,buy,VWCE,7.5873,-800.00,EUR,Piano di accumulo
+2025-07-31,interest,,,7.34,EUR,Interessi
+2025-08-03,deposit,,,800.00,EUR,Deposito
+2025-08-03,buy,VWCE,7.5981,-800.00,EUR,Piano di accumulo
+2025-08-31,interest,,,7.35,EUR,Interessi
+2025-09-03,deposit,,,800.00,EUR,Deposito
+2025-09-03,buy,VWCE,7.3306,-800.00,EUR,Piano di accumulo
+2025-09-30,interest,,,7.37,EUR,Interessi
+2025-09-30,position,VWCE,257.1868,,EUR,
+2025-09-30,cash,,,2956.37,EUR,
+2025-10-03,deposit,,,800.00,EUR,Deposito
+2025-10-03,buy,VWCE,7.0721,-800.00,EUR,Piano di accumulo
+2025-10-31,interest,,,7.39,EUR,Interessi
+2025-11-03,deposit,,,800.00,EUR,Deposito
+2025-11-03,buy,VWCE,6.9896,-800.00,EUR,Piano di accumulo
+2025-11-30,interest,,,7.41,EUR,Interessi
+2025-12-03,deposit,,,800.00,EUR,Deposito
+2025-12-03,buy,VWCE,6.6994,-800.00,EUR,Piano di accumulo
+2025-12-31,interest,,,7.43,EUR,Interessi
+2025-12-31,position,VWCE,277.9479,,EUR,
+2025-12-31,cash,,,2978.60,EUR,
+2026-01-03,deposit,,,800.00,EUR,Deposito
+2026-01-03,buy,VWCE,6.3854,-800.00,EUR,Piano di accumulo
+2026-01-31,interest,,,4.96,EUR,Interessi
+2026-02-03,deposit,,,800.00,EUR,Deposito
+2026-02-03,buy,VWCE,6.3361,-800.00,EUR,Piano di accumulo
+2026-02-28,interest,,,4.97,EUR,Interessi
+2026-03-03,deposit,,,800.00,EUR,Deposito
+2026-03-03,buy,VWCE,6.3645,-800.00,EUR,Piano di accumulo
+2026-03-31,interest,,,4.98,EUR,Interessi
+2026-03-31,position,VWCE,297.0339,,EUR,
+2026-03-31,cash,,,2993.51,EUR,
+2026-04-03,deposit,,,800.00,EUR,Deposito
+2026-04-03,buy,VWCE,6.3071,-800.00,EUR,Piano di accumulo
+2026-04-30,interest,,,4.99,EUR,Interessi
+2026-05-03,deposit,,,800.00,EUR,Deposito
+2026-05-03,buy,VWCE,6.2583,-800.00,EUR,Piano di accumulo
+2026-05-31,interest,,,5.00,EUR,Interessi
+2026-06-03,deposit,,,800.00,EUR,Deposito
+2026-06-03,buy,VWCE,6.0910,-799.99,EUR,Piano di accumulo
+2026-06-30,interest,,,5.01,EUR,Interessi
+2026-06-30,position,VWCE,315.6903,,EUR,
+2026-06-30,cash,,,3008.52,EUR,
+2026-07-03,deposit,,,800.00,EUR,Deposito
+2026-07-03,buy,VWCE,5.9887,-800.00,EUR,Piano di accumulo
+2026-07-31,interest,,,5.01,EUR,Interessi
+2026-08-03,deposit,,,800.00,EUR,Deposito
+2026-08-03,buy,VWCE,6.0450,-800.00,EUR,Piano di accumulo
+2026-08-31,interest,,,5.02,EUR,Interessi
+2026-09-03,deposit,,,800.00,EUR,Deposito
+2026-09-03,buy,VWCE,6.1360,-800.00,EUR,Piano di accumulo
+2026-09-30,interest,,,5.03,EUR,Interessi
+2026-09-30,position,VWCE,333.8600,,EUR,
+2026-09-30,cash,,,3023.58,EUR,
+2026-10-03,deposit,,,800.00,EUR,Deposito
+2026-10-03,buy,VWCE,6.1886,-799.99,EUR,Piano di accumulo
+2026-10-21,position,VWCE,340.0486,,EUR,
+2026-10-21,cash,,,3023.59,EUR,

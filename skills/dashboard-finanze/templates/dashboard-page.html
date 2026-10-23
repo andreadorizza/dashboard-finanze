@@ -1,0 +1,939 @@
+<!--
+  Dashboard page template (Italian). Each <section data-module="..."> is one module from
+  references/modules.md: delete the sections the person didn't choose, and the headline
+  tiles that read them. The script skips any module whose element is missing.
+  Change CFG (top of the script) and the visible text to their language and choices.
+-->
+<style>
+.hf{font-family:var(--font-anthropic-sans);color:var(--color-fg);}
+.hf .demo{display:inline-block;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);border:1px dashed var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-xs) var(--cds-pad-sm);margin:0 0 var(--cds-gap-md);}
+.hf h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0 0 var(--cds-gap-xs);}
+.hf .takeaway{color:var(--color-fg-muted);font-size:var(--cds-font-size-body);margin:0 0 var(--cds-gap-lg);max-width:62rem;}
+.hf .takeaway b{color:var(--color-fg);font-weight:var(--cds-font-weight-medium);}
+.hf .takeaway::first-letter{text-transform:uppercase;}
+.hf .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:var(--cds-gap-md);}
+.hf .card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0;}
+.hf .kpi-label{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);}
+.hf .kpi-value{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;margin:var(--cds-gap-xs) 0;}
+.hf .kpi-sub{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums;}
+.hf h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:var(--cds-gap-xl) 0 var(--cds-gap-sm);}
+.hf h2 .opt{font-size:var(--cds-font-size-caption);font-weight:400;color:var(--color-fg-muted);margin-left:var(--cds-gap-xs);}
+.hf h3{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);margin:0;}
+.hf .note{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:var(--cds-gap-xs) 0 var(--cds-gap-md);}
+.hf .note b{color:var(--color-fg);font-weight:var(--cds-font-weight-medium);}
+.hf .big{font-family:var(--font-anthropic-serif);font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;}
+.hf .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:var(--cds-gap-md);}
+.hf .chart{position:relative;min-height:240px;}
+.hf .chart.short{min-height:190px;}
+.hf .chart.mini{min-height:96px;}
+.hf svg text{font-size:var(--cds-font-size-caption);fill:var(--color-fg-muted);font-family:var(--font-anthropic-sans);font-variant-numeric:tabular-nums;}
+.hf .tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);white-space:nowrap;display:none;z-index:2;font-variant-numeric:tabular-nums;}
+.hf .tip .t-head{color:var(--cds-text-secondary);margin-bottom:2px;}
+.hf .legend{display:flex;flex-wrap:wrap;gap:var(--cds-gap-md);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-bottom:var(--cds-gap-sm);}
+.hf .sw{display:inline-block;width:.6rem;height:.6rem;border-radius:2px;margin-right:.35rem;vertical-align:middle;}
+.hf .sw.tick{width:2px;height:.8rem;border-radius:0;}
+.hf table{width:100%;border-collapse:collapse;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums;}
+.hf th,.hf td{text-align:left;padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top;}
+.hf th{color:var(--color-fg-muted);font-weight:var(--cds-font-weight-medium);}
+.hf .num{text-align:right;}
+.hf .scroll{max-height:24rem;overflow:auto;}
+.hf .scroll th{position:sticky;top:0;background:var(--color-panel);}
+.hf .st-new{color:var(--color-ok);}
+.hf .st-increased{color:var(--color-warn);}
+.hf .st-stopped{color:var(--color-fg-muted);}
+.hf .failed{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:inherit;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);}
+.hf .empty-note{display:flex;align-items:center;justify-content:center;min-height:inherit;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);}
+.hf table.one-ccy .ccy{display:none;}
+.hf .failed::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad);}
+.hf [data-dash-source-state=empty]{color:transparent;}
+.hf [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow);}
+.hf .foot{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-top:var(--cds-gap-xl);}
+</style>
+
+<div class="hf">
+  <p class="demo" id="demo-note" data-module="demo">Demo con dati inventati: Giulia e Marco non esistono e nessun numero è reale.</p>
+  <h1 id="top">Finanze di casa</h1>
+  <p class="takeaway" id="takeaway">
+    <span id="tk-saved"><span class="dash-skeleton" data-fmt="inMonthCap" data-source="kpis" data-field="full_month" data-row="0">—</span>
+      <span class="verb-saved">avete risparmiato</span> <b class="dash-skeleton" data-source="kpis" data-field="saved_month" data-row="0">—</b>,
+      il <b class="dash-skeleton" data-source="kpis" data-field="saved_share" data-row="0">—</b> delle entrate.</span>
+    <span id="tk-over" hidden><span class="dash-skeleton" data-fmt="inMonthCap" data-source="kpis" data-field="full_month" data-row="0">—</span>
+      <span class="verb-over">avete speso</span> <b class="dash-skeleton" data-source="kpis" data-field="deficit_month" data-row="0">—</b> più di quanto è entrato.</span>
+    <span data-module="cushion">Il fondo emergenza copre <b class="dash-skeleton" data-source="kpis" data-field="cushion_months" data-row="0">—</b> mesi di spese essenziali.</span>
+    Movimenti da confermare: <b class="dash-skeleton" data-source="kpis" data-field="flags_count" data-row="0">—</b>.
+  </p>
+
+  <div class="kpis" id="headline">
+    <div class="card">
+      <div class="kpi-label">Risparmio di <span class="dash-skeleton" data-fmt="month" data-source="kpis" data-field="full_month" data-row="0">—</span></div>
+      <div class="kpi-value dash-skeleton" data-source="kpis" data-field="saved_month" data-row="0">—</div>
+      <div class="kpi-sub">Il <span class="dash-skeleton" data-source="kpis" data-field="sr_window" data-row="0">—</span> delle entrate
+        negli ultimi <span class="dash-skeleton" data-source="kpis" data-field="sr_months" data-row="0">—</span> mesi</div>
+    </div>
+    <div class="card" data-module="budget">
+      <div class="kpi-label">Speso finora <span class="dash-skeleton" data-fmt="inMonth" data-source="month_budget" data-field="month" data-row="0">—</span></div>
+      <div class="kpi-value dash-skeleton" data-source="kpis" data-field="spent_now" data-row="0">—</div>
+      <div class="kpi-sub">su un budget di <span class="dash-skeleton" data-source="kpis" data-field="budget_now" data-row="0">—</span> ·
+        <span id="month-running">è passato il <span class="dash-skeleton" data-source="kpis" data-field="elapsed" data-row="0">—</span> del mese</span><span id="month-done" hidden>mese concluso</span></div>
+    </div>
+    <div class="card" data-module="cushion">
+      <div class="kpi-label">Fondo emergenza</div>
+      <div class="kpi-value dash-skeleton" data-source="kpis" data-field="cushion_months" data-row="0">—</div>
+      <div class="kpi-sub">mesi di spese essenziali coperti</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">Patrimonio netto</div>
+      <div class="kpi-value dash-skeleton" data-source="kpis" data-field="net_worth" data-row="0">—</div>
+      <div class="kpi-sub"><span class="dash-skeleton" data-source="kpis" data-field="nw_change_12m" data-row="0">—</span> negli ultimi
+        <span class="dash-skeleton" data-source="kpis" data-field="nw_months" data-row="0">—</span> mesi</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">Da confermare</div>
+      <div class="kpi-value dash-skeleton" data-source="kpis" data-field="flags_count" data-row="0">—</div>
+      <div class="kpi-sub">movimenti con la categoria in sospeso</div>
+    </div>
+  </div>
+
+  <h2 id="overview">Il punto della situazione</h2>
+  <div class="grid">
+    <section class="card" id="budget-card" data-module="budget">
+      <h3>Budget di <span class="dash-skeleton" data-fmt="month" data-source="month_budget" data-field="month" data-row="0">—</span></h3>
+      <p class="note">Quanto è stato speso finora in ogni categoria, rispetto al budget. La linea tratteggiata segna quanta parte del mese è passata: se una barra la supera, in quella categoria si sta spendendo più in fretta del previsto.</p>
+      <div class="legend" id="budget-legend"></div>
+      <div class="chart dash-skeleton" id="budget-chart" data-source="month_budget"></div>
+    </section>
+    <section class="card" id="rule-card" data-module="rule">
+      <h3>Regola 50/30/20, ultimi 12 mesi</h3>
+      <p class="note">Come si dividono le entrate nette (dopo le tasse) tra spese essenziali, stile di vita e risparmio. La regola suggerisce al massimo il 50% per le essenziali, il 30% per lo stile di vita e almeno il 20% di risparmio: le due linee segnano il 50% e l'80%.</p>
+      <div class="legend" id="rule-legend"></div>
+      <div class="chart mini dash-skeleton" id="rule-chart" data-source="rule"></div>
+    </section>
+    <section class="card" id="cushion-card" data-module="cushion">
+      <h3>Fondo emergenza</h3>
+      <p class="note">Per quanti mesi i soldi sui conti coprirebbero le spese essenziali se le entrate si fermassero: la liquidità di oggi, meno le tasse ancora da versare, divisa per la spesa essenziale media degli ultimi 6 mesi. La fascia grigia è l'obiettivo di solito consigliato, da 3 a 6 mesi.</p>
+      <div class="big"><span class="dash-skeleton" data-source="cushion" data-field="months" data-row="0">—</span> mesi</div>
+      <p class="note"><span class="dash-skeleton" data-source="cushion" data-field="liquid" data-row="0">—</span> disponibili ·
+        <span class="dash-skeleton" data-source="cushion" data-field="essential_avg" data-row="0">—</span> al mese di spese essenziali</p>
+      <div class="chart mini dash-skeleton" id="cushion-chart" data-source="cushion"></div>
+    </section>
+  </div>
+
+  <section data-module="cashflow">
+    <h2 id="cashflow">Entrate e uscite</h2>
+    <div class="grid">
+      <div class="card" id="is-card">
+        <h3>Mese per mese, ultimi 16 mesi</h3>
+        <p class="note">Le entrate comprendono quelle una tantum, le uscite anche le tasse messe da parte. Il mese in corso è ancora parziale.</p>
+        <div class="legend" id="is-legend"></div>
+        <div class="chart short dash-skeleton" id="is-chart" data-source="monthly"></div>
+      </div>
+      <div class="card" id="sr-card">
+        <h3>Tasso di risparmio sugli ultimi 12 mesi</h3>
+        <p class="note">La parte delle entrate che resta, calcolata a ogni fine mese sui 12 mesi precedenti e senza le entrate una tantum (rimborsi, vendite, premi).</p>
+        <div class="chart short dash-skeleton" id="sr-chart" data-source="monthly"></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-module="categories">
+    <h2 id="categories">Dove vanno i soldi</h2>
+    <div class="card" id="cat-card">
+      <h3>Spese di <span class="dash-skeleton" data-fmt="month" data-source="cat_vs_median" data-field="month" data-row="0">—</span> per categoria</h3>
+      <p class="note">Ogni barra è l'ultimo mese completo; il trattino è la spesa abituale, cioè la mediana dei 6 mesi precedenti. In evidenza le categorie che superano il solito di oltre un quarto e di almeno 50 €.</p>
+      <div class="legend" id="cat-legend"></div>
+      <div class="chart dash-skeleton" id="cat-chart" data-source="cat_vs_median"></div>
+    </div>
+  </section>
+
+  <section data-module="recurring">
+    <h2 id="recurring">Spese fisse e abbonamenti</h2>
+    <div class="card" id="recurring-card">
+      <p class="note" style="margin-top:0">Pagamenti che tornano a intervalli regolari, riconosciuti dai movimenti.
+        In tutto fanno <b class="dash-skeleton" data-source="recurring_totals" data-field="monthly" data-row="0">—</b> al mese,
+        <b class="dash-skeleton" data-source="recurring_totals" data-field="yearly" data-row="0">—</b> all'anno.</p>
+      <div class="scroll">
+        <table id="recurring-table" data-source="recurring" data-row-key="name">
+          <thead><tr>
+            <th data-field="name">Cosa</th><th data-field="category">Categoria</th><th data-field="person">Chi paga</th>
+            <th data-field="frequency">Frequenza</th><th class="num" data-field="amount">Importo</th>
+            <th class="num" data-field="monthly_cost">Costo al mese</th><th data-field="status">Stato</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section data-module="shared">
+    <h2 id="shared">Spese condivise</h2>
+    <div class="card" id="shared-card">
+      <p class="note" style="margin-top:0">Le spese in comune di <span class="dash-skeleton" data-fmt="month" data-source="shared_month" data-field="month" data-row="0">—</span> (affitto, spesa, bollette, viaggi), divise in proporzione a quanto ha guadagnato ciascuno negli ultimi 12 mesi, tenendo conto dei soldi che vi siete già passati.
+        <span id="settle-owe">Per pareggiare i conti, <span class="dash-skeleton" data-source="shared_month" data-field="debtor" data-row="0">—</span> deve
+        <b class="dash-skeleton" data-source="shared_month" data-field="settle" data-row="0">—</b> a
+        <span class="dash-skeleton" data-source="shared_month" data-field="creditor" data-row="0">—</span>.</span>
+        <span id="settle-even" hidden>Siete pari.</span></p>
+      <table id="shared-table" data-source="shared_month" data-row-key="person">
+        <thead><tr><th data-field="person">Chi</th><th class="num" data-field="paid">Ha pagato</th>
+          <th class="num" data-field="share">Sua quota</th><th class="num" data-field="moved">Già ricevuto (+) o dato (−)</th>
+          <th class="num" data-field="diff">Credito (+) o debito (−)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section data-module="networth">
+    <h2 id="net-worth">Patrimonio</h2>
+    <div class="grid">
+      <div class="card" id="nw-card">
+        <h3>Patrimonio netto</h3>
+        <p class="note">Quello che possedete meno i debiti, a ogni fine mese, ai prezzi e ai cambi di quel giorno.</p>
+        <div class="chart dash-skeleton" id="nw-chart" data-source="monthly"></div>
+      </div>
+      <div class="card" id="pp-card" data-module="people">
+        <h3>Per persona</h3>
+        <p class="note">Il patrimonio di ciascuno in base ai conti intestati: conta dove sono i soldi, non chi ha pagato cosa.</p>
+        <div class="chart dash-skeleton" id="pp-chart" data-source="people"></div>
+      </div>
+      <div class="card" id="mv-card">
+        <h3>Perché è cambiato, ultimi 12 mesi</h3>
+        <p class="note">Ogni mese la variazione si scompone in risparmio, entrate una tantum, andamento dei mercati e tassi di cambio. Quota non spiegata nel mese peggiore:
+          <b class="dash-skeleton" data-source="checks" data-field="unexplained_max" data-row="0">—</b> (deve essere zero: è la prova che i conti tornano).</p>
+        <div class="legend" id="mv-legend"></div>
+        <div class="chart dash-skeleton" id="mv-chart" data-source="monthly"></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-module="investments">
+    <h2 id="investments">Investimenti <span class="opt">sezione facoltativa</span></h2>
+    <div class="grid">
+      <div class="card" id="alloc-card">
+        <h3>Il portafoglio oggi</h3>
+        <p class="note">Valore ai prezzi di oggi, per strumento e per persona.</p>
+        <div class="chart short dash-skeleton" id="alloc-chart" data-source="holdings"></div>
+      </div>
+      <div class="card" id="mk-card">
+        <h3>Guadagno dall'acquisto</h3>
+        <p class="note">A ogni fine mese, quanto valgono gli investimenti meno quanto ci avete versato.</p>
+        <div class="chart short dash-skeleton" id="mk-chart" data-source="monthly"></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-module="fire">
+    <h2 id="fire">Indipendenza finanziaria (FIRE) <span class="opt">esempio di sezione facoltativa</span></h2>
+    <div class="card" id="fire-card">
+      <p class="note" style="margin-top:0">Quanto capitale servirebbe per vivere di rendita con 30.000 € l'anno, prelevandone ogni anno il 3,5% o il 4%, e quanti anni mancano se continuate a risparmiare come negli ultimi 12 mesi, con tre ipotesi di rendimento al netto dell'inflazione. È una stima, non una previsione.</p>
+      <table id="fire-table" data-source="fire" data-row-key="swr">
+        <thead><tr>
+          <th data-field="swr">Prelievo annuo</th><th class="num" data-field="fire_number">Capitale necessario</th>
+          <th class="num" data-field="progress">Già raggiunto</th><th class="num" data-field="years_3">Anni con rendimento al 3%</th>
+          <th class="num" data-field="years_5">Al 5%</th><th class="num" data-field="years_7">Al 7%</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section data-module="balances">
+    <h2 id="balances">Tutti i saldi di oggi</h2>
+    <div class="card" id="balances-card">
+      <p class="note" style="margin-top:0">Una riga per conto e per valuta, in euro ai prezzi e ai cambi di oggi.</p>
+      <div class="scroll">
+        <table id="holdings-table" data-source="holdings" data-row-key="account,commodity">
+          <thead><tr>
+            <th data-field="person">Chi</th><th data-field="institution">Conto</th>
+            <th class="ccy" data-field="commodity">Cosa</th><th data-field="kind">Tipo</th>
+            <th class="num" data-field="units">Quantità</th><th class="num" data-field="value">Valore</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section data-module="flags">
+    <h2 id="to-check">Da confermare</h2>
+    <div class="card" id="flags-card">
+      <p class="note" style="margin-top:0">Movimenti registrati nella categoria più probabile, in attesa di conferma. Basta dire a Claude di cosa si tratta.</p>
+      <div class="scroll">
+        <table id="flags-table" data-source="flags" data-row-key="id">
+          <thead><tr><th data-field="date">Data</th><th data-field="where">Conto</th><th data-field="what">Descrizione</th>
+            <th class="num" data-field="amount">Importo</th><th data-field="booked_as">Registrato come</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot" id="foot">Costruita dagli estratti conto, con un registro che ogni mese torna al centesimo. La pagina mostra solo totali: gli unici movimenti singoli sono i pochi da confermare.</p>
+</div>
+
+<script>
+(function () {
+  // ── choices the person made (constants, not data) ───────────────────────
+  const CFG = {
+    locale: 'it-IT', currency: 'EUR',
+    cushionTarget: [3, 6],
+    text: {
+      freq: {monthly: 'mensile', bimonthly: 'bimestrale', quarterly: 'trimestrale', yearly: 'annuale'},
+      status: {active: 'attivo', new: 'nuovo', increased: 'aumentato', stopped: 'terminato'},
+      kind: {cash: 'liquidità', investment: 'investimento', receivable: 'da riavere', debt: 'debito', tax: 'tasse dovute',
+             pension: 'previdenza', property: 'immobile', transit: 'in transito'},
+      pendingTransfer: "Giroconto: manca l'estratto dell'altro conto",
+      income: 'Entrate',
+      needMonths: 'Servono almeno 12 mesi di dati.',
+      was: 'prima',
+      // "a settembre", "ad agosto": the d only before another a
+      inMonth: m => (/^a/i.test(m) ? 'ad ' : 'a ') + m,
+      savedVerb: n => n > 1 ? 'avete risparmiato' : 'hai risparmiato',
+      overVerb: n => n > 1 ? 'avete speso' : 'hai speso'
+    }
+  };
+
+  // ── formatting ──────────────────────────────────────────────────────────
+  const NF = o => new Intl.NumberFormat(CFG.locale, {useGrouping: 'always', ...o});
+  const curFmt = NF({style: 'currency', currency: CFG.currency, maximumFractionDigits: 0});
+  const curFmt2 = NF({style: 'currency', currency: CFG.currency, minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const parts = curFmt.formatToParts(1);
+  const sym = (parts.find(p => p.type === 'currency') || {value: CFG.currency}).value;
+  const symFirst = parts.findIndex(p => p.type === 'currency') < parts.findIndex(p => p.type === 'integer');
+  const withSym = s => symFirst ? sym + s : s + ' ' + sym;
+  const minus = s => s.replace('-', '−');
+  const money = v => minus(curFmt.format(v));
+  const money2 = v => minus(curFmt2.format(v));
+  const k1 = NF({maximumFractionDigits: 1});
+  // whole numbers up to a million (123.339 €), then "1,2 mln €"
+  const big = v => Math.abs(v) >= 1e6 ? (v < 0 ? '−' : '') + withSym(k1.format(Math.abs(v) / 1e6) + ' mln') : money(v);
+  const signed = v => (v >= 0 ? '+' : '−') + curFmt.format(Math.abs(v));
+  const pct1 = v => NF({style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1}).format(v);
+  const pctR = v => NF({style: 'percent', maximumFractionDigits: 1}).format(v);
+  const pct0 = v => NF({style: 'percent', maximumFractionDigits: 0}).format(v);
+  const dec1 = v => NF({minimumFractionDigits: 1, maximumFractionDigits: 1}).format(Number(v));
+  const units3 = v => NF({maximumFractionDigits: 3}).format(Number(v));
+  const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+  const months = Array.from({length: 12}, (_, i) => new Date(Date.UTC(2020, i, 15)));
+  const mName = o => months.map(d => new Intl.DateTimeFormat(CFG.locale, {...o, timeZone: 'UTC'}).format(d));
+  const LOCALE = {dateTime: '%x %X', date: '%d/%m/%Y', time: '%H:%M:%S', periods: ['AM', 'PM'],
+    days: ['', '', '', '', '', '', ''], shortDays: ['', '', '', '', '', '', ''],
+    months: mName({month: 'long'}), shortMonths: mName({month: 'short'}).map(s => s.replace('.', ''))};
+  const uf = d3.timeFormatLocale ? d3.timeFormatLocale(LOCALE).utcFormat : d3.utcFormat;
+  const dayFmt = uf('%-d %b %Y'), monFmt = uf('%b %Y'), monLong = uf('%B %Y'), monOnly = uf('%B');
+  const parse = s => new Date(String(s).slice(0, 10) + 'T00:00:00Z');
+  const N = v => (v === '' || v == null) ? null : Number(v);
+  const C = dash.colors;
+  const $ = id => document.getElementById(id);
+
+  // ── calculations (readers can open each one in Sources) ─────────────────
+  // Each fn must be self-contained: if the groups in budget.csv have other names,
+  // change 'Essenziali', 'Stile di vita' and 'Tasse e costi' inside them too.
+  dash.calc('month_budget', {
+    inputs: ['categories', 'budget'],
+    title: 'Budget del mese in corso',
+    description: 'Per ogni categoria con un budget: quanto è stato speso nel mese in corso, il budget e quanta parte del mese è passata.',
+    fn: (categories, budget) => {
+      const last = categories.reduce((m, r) => r.month > m ? r.month : m, '');
+      const [y, m, d] = last.split('-').map(Number);
+      const dim = new Date(Date.UTC(y, m, 0)).getUTCDate();
+      return budget.filter(b => Number(b.budget) > 0).map(b => {
+        const row = categories.find(r => r.month === last && r.category === b.category);
+        const spent = row ? Number(row.amount) : 0;
+        return {month: last, category: b.category, group: b.group, spent, budget: Number(b.budget),
+                share: spent / Number(b.budget), elapsed: d / dim};
+      });
+    }
+  });
+
+  dash.calc('cushion', {
+    inputs: ['holdings', 'categories'],
+    title: 'Fondo emergenza',
+    description: 'Liquidità di oggi meno le tasse da versare, divisa per la spesa essenziale media degli ultimi 6 mesi completi.',
+    fn: (holdings, categories) => {
+      const liquid = holdings.filter(h => h.kind === 'cash' || h.kind === 'tax').reduce((s, h) => s + Number(h.value), 0);
+      const isEnd = s => { const [y, m, d] = s.split('-').map(Number); return d === new Date(Date.UTC(y, m, 0)).getUTCDate(); };
+      const full = Array.from(new Set(categories.map(r => r.month))).filter(isEnd).sort().slice(-6);
+      const ess = categories.filter(r => full.includes(r.month) && r.group === 'Essenziali')
+        .reduce((s, r) => s + Number(r.amount), 0) / Math.max(1, full.length);
+      return [{liquid, essential_avg: ess, months: ess > 0 ? liquid / ess : 0}];
+    }
+  });
+
+  dash.calc('rule', {
+    inputs: ['monthly', 'categories'],
+    title: 'Regola 50/30/20',
+    description: 'Ultimi 12 mesi completi: spese essenziali, stile di vita e risparmio come quota delle entrate regolari al netto delle tasse.',
+    fn: (monthly, categories) => {
+      const isEnd = s => { const [y, m, d] = s.split('-').map(Number); return d === new Date(Date.UTC(y, m, 0)).getUTCDate(); };
+      const full = monthly.map(r => r.month).filter(isEnd).sort().slice(-12);
+      const sum = g => categories.filter(r => full.includes(r.month) && r.group === g).reduce((s, r) => s + Number(r.amount), 0);
+      const income = monthly.filter(r => full.includes(r.month)).reduce((s, r) => s + Number(r.income_regular), 0);
+      const net = income - sum('Tasse e costi');
+      const needs = sum('Essenziali') / net, wants = sum('Stile di vita') / net;
+      return [{from: full[0], to: full[full.length - 1], net_income: net, needs, wants, saved: 1 - needs - wants}];
+    }
+  });
+
+  dash.calc('cat_vs_median', {
+    inputs: ['categories'],
+    title: 'Ultimo mese contro il solito',
+    description: "Per ogni categoria, la spesa dell'ultimo mese completo e la mediana dei 6 mesi prima; «sopra» se la supera di oltre il 25% e di almeno 50.",
+    fn: (categories) => {
+      const isEnd = s => { const [y, m, d] = s.split('-').map(Number); return d === new Date(Date.UTC(y, m, 0)).getUTCDate(); };
+      const ms = Array.from(new Set(categories.map(r => r.month))).filter(isEnd).sort();
+      const last = ms[ms.length - 1], prev = ms.slice(-7, -1);
+      const median = xs => { const s = xs.slice().sort((a, b) => a - b), h = Math.floor(s.length / 2);
+        return s.length ? (s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2) : 0; };
+      return Array.from(new Set(categories.map(r => r.category))).map(c => {
+        const row = categories.find(r => r.month === last && r.category === c);
+        const amount = row ? Number(row.amount) : 0;
+        const med = median(categories.filter(r => prev.includes(r.month) && r.category === c).map(r => Number(r.amount)));
+        return {month: last, category: c, amount, median: med, above: amount > med * 1.25 && amount - med > 50};
+      }).filter(r => r.amount > 0 || r.median > 0);
+    }
+  });
+
+  dash.calc('recurring_totals', {
+    inputs: ['recurring'],
+    title: 'Totale spese fisse',
+    description: 'Somma al mese e all’anno dei pagamenti ricorrenti ancora attivi.',
+    fn: (recurring) => {
+      const live = recurring.filter(r => r.status !== 'stopped');
+      const m = live.reduce((s, r) => s + Number(r.monthly_cost), 0);
+      return [{monthly: m, yearly: m * 12, count: live.length}];
+    }
+  });
+
+  dash.calc('shared_month', {
+    inputs: ['people'],
+    title: 'Spese condivise del mese',
+    description: "Nell'ultimo mese completo: quanto ognuno ha pagato di spese condivise, la sua quota e i soldi già passati dall'uno all'altro.",
+    fn: (people) => {
+      const isEnd = s => { const [y, m, d] = s.split('-').map(Number); return d === new Date(Date.UTC(y, m, 0)).getUTCDate(); };
+      const last = Array.from(new Set(people.map(r => r.month))).filter(isEnd).sort().pop();
+      const rows = people.filter(r => r.month === last).map(r => ({month: last, person: r.person,
+        paid: Number(r.shared_paid), share: Number(r.shared_share), moved: Number(r.received_from_others || 0),
+        diff: Number(r.shared_paid) - Number(r.shared_share) - Number(r.received_from_others || 0)}));
+      const ahead = rows.slice().sort((a, b) => b.diff - a.diff);
+      const settle = rows.length === 2 ? Math.abs(ahead[0].diff) : 0;
+      return rows.map(r => ({...r, settle, creditor: ahead[0] ? ahead[0].person : '', debtor: ahead.length > 1 ? ahead[ahead.length - 1].person : ''}));
+    }
+  });
+
+  dash.calc('kpis', {
+    inputs: ['monthly', 'flags', 'cushion', 'month_budget'],
+    title: 'Numeri principali',
+    description: "Risparmio dell'ultimo mese completo e degli ultimi 12 mesi completi (o quelli che ci sono), spese del mese in corso contro il budget, fondo emergenza, patrimonio e variazione in 12 mesi, movimenti da confermare.",
+    fn: (monthly, flags, cushion, month_budget) => {
+      const n = v => Number(v);
+      const isEnd = s => { const [y, m, d] = s.split('-').map(Number); return d === new Date(Date.UTC(y, m, 0)).getUTCDate(); };
+      const last = monthly[monthly.length - 1];
+      const fulls = monthly.filter(r => isEnd(r.month));
+      const full = fulls[fulls.length - 1];
+      const win = fulls.slice(-12);
+      const winIncome = win.reduce((s, r) => s + n(r.income_regular), 0);
+      const winSaved = win.reduce((s, r) => s + n(r.savings_regular), 0);
+      const back = Math.min(12, monthly.length - 1), yearAgo = monthly[monthly.length - 1 - back];
+      const spent = month_budget.reduce((s, r) => s + r.spent, 0), budget = month_budget.reduce((s, r) => s + r.budget, 0);
+      return [{
+        full_month: full.month, saved_month: n(full.savings_regular),
+        saved_share: n(full.income_regular) > 0 ? n(full.savings_regular) / n(full.income_regular) : 0,
+        sr_window: winIncome > 0 ? winSaved / winIncome : 0, sr_months: win.length, spent_now: spent, budget_now: budget,
+        elapsed: month_budget.length ? month_budget[0].elapsed : 0,
+        cushion_months: cushion.length ? cushion[0].months : 0,
+        net_worth: n(last.net_worth), nw_change_12m: n(last.net_worth) - n(yearAgo.net_worth), nw_months: back,
+        flags_count: flags.length, deficit_month: Math.max(0, -n(full.savings_regular))
+      }];
+    }
+  });
+
+  dash.calc('checks', {
+    inputs: ['monthly'],
+    title: 'Controllo di quadratura',
+    description: 'Il valore più grande, in assoluto, della colonna «non spiegato» in tutti i mesi: deve essere 0.',
+    fn: (monthly) => [{unexplained_max: monthly.reduce((mx, r) => Math.max(mx, Math.abs(Number(r.unexplained))), 0)}]
+  });
+
+  const KPI_FMT = {
+    full_month: v => monOnly(parse(v)), saved_month: money, deficit_month: money, saved_share: pct0, sr_window: pct0, sr_months: v => String(v),
+    spent_now: money, budget_now: money, elapsed: pct0, cushion_months: dec1,
+    net_worth: big, nw_change_12m: signed, nw_months: v => String(v), flags_count: v => String(v)
+  };
+
+  // a mark can ask for another wording of the same value with data-fmt
+  const FMT_AS = {
+    month: v => monOnly(parse(v)),
+    inMonth: v => CFG.text.inMonth(monOnly(parse(v))),
+    inMonthCap: v => cap(CFG.text.inMonth(monOnly(parse(v))))
+  };
+
+  // ── drawing helpers ─────────────────────────────────────────────────────
+  function failed(el) {
+    el.innerHTML = '';
+    const d = document.createElement('div');
+    d.className = 'failed';
+    d.textContent = 'Non caricato';
+    el.appendChild(d);
+  }
+
+  function legend(el, items) {
+    if (!el) return;
+    el.innerHTML = '';
+    items.forEach(it => {
+      const s = document.createElement('span');
+      const sw = document.createElement('span');
+      sw.className = 'sw' + (it.tick ? ' tick' : '');
+      sw.style.background = it.color;
+      s.appendChild(sw);
+      s.appendChild(document.createTextNode(it.name));
+      el.appendChild(s);
+    });
+  }
+
+  function makeTip(el) {
+    const tip = document.createElement('div');
+    tip.className = 'tip';
+    el.appendChild(tip);
+    return {
+      show(x, y, head, lines) {
+        tip.innerHTML = '';
+        const h = document.createElement('div');
+        h.className = 't-head';
+        h.textContent = head;
+        tip.appendChild(h);
+        lines.forEach(l => {
+          const row = document.createElement('div');
+          if (l.color) {
+            const sw = document.createElement('span');
+            sw.className = 'sw';
+            sw.style.background = l.color;
+            row.appendChild(sw);
+          }
+          row.appendChild(document.createTextNode(l.text));
+          tip.appendChild(row);
+        });
+        tip.style.display = 'block';
+        const w = tip.offsetWidth, W = el.clientWidth;
+        tip.style.left = Math.max(0, Math.min(W - w, x + 12)) + 'px';
+        tip.style.top = Math.max(0, y - 10) + 'px';
+      },
+      hide() { tip.style.display = 'none'; }
+    };
+  }
+
+  function textWidth(svg, s) {
+    const t = svg.append('text').text(s);
+    const w = t.node().getComputedTextLength();
+    t.remove();
+    return w;
+  }
+
+  function newSvg(el, H) {
+    el.innerHTML = '';
+    const W = Math.max(280, el.clientWidth || 600);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`);
+    return {svg, W};
+  }
+
+  function yAxis(svg, y, ml, W, mr, fmt, ticks) {
+    const g = svg.append('g');
+    y.ticks(ticks).forEach(t => {
+      g.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(t)).attr('y2', y(t))
+        .style('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 1);
+      g.append('text').attr('x', ml - 6).attr('y', y(t)).attr('dy', '0.32em').attr('text-anchor', 'end').text(fmt(t));
+    });
+  }
+
+  function xAxisTime(svg, x, H, mb, W, ml, mr) {
+    const n = Math.max(2, Math.floor((W - ml - mr) / 90));
+    const ax = svg.append('g').attr('transform', `translate(0,${H - mb})`)
+      .call(d3.axisBottom(x).ticks(n).tickFormat(uf('%b ’%y')).tickSizeOuter(0));
+    ax.attr('font-size', null).attr('font-family', null);
+    ax.select('.domain').style('stroke', 'var(--cds-chart-axis)');
+    ax.selectAll('.tick line').remove();
+  }
+
+  function lineChart(el, lines, o) {
+    if (!lines.some(l => l.pts.length > 1)) {
+      el.innerHTML = '';
+      const d = document.createElement('div');
+      d.className = 'empty-note';
+      d.textContent = o.empty || '—';
+      el.appendChild(d);
+      return;
+    }
+    const H = o.height || 240, mt = 10, mb = 24;
+    const {svg, W} = newSvg(el, H);
+    const ys = lines.flatMap(l => l.pts.map(p => p.y)), xs = lines.flatMap(l => l.pts.map(p => p.x));
+    let lo = d3.min(ys), hi = d3.max(ys);
+    if (o.zero) { lo = Math.min(0, lo); hi = Math.max(0, hi); }
+    const y = d3.scaleLinear([lo, hi], [H - mb, mt]).nice(5);
+    const ml = d3.max(y.ticks(5), t => textWidth(svg, o.fy(t))) + 10;
+    const ends = lines.map(l => ({l, p: l.pts[l.pts.length - 1]}));
+    const mr = o.endLabels ? d3.max(ends, e => textWidth(svg, e.l.name + ' ' + o.fy(e.p.y))) + 14 : 12;
+    const x = d3.scaleUtc(d3.extent(xs), [ml, W - mr]);
+    yAxis(svg, y, ml, W, mr, o.fy, 5);
+    xAxisTime(svg, x, H, mb, W, ml, mr);
+    if (o.zero) {
+      svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(0)).attr('y2', y(0))
+        .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 3');
+    }
+    const line = d3.line().x(p => x(p.x)).y(p => y(p.y));
+    lines.forEach(l => svg.append('path').datum(l.pts).attr('d', line).attr('fill', 'none').style('stroke', l.color)
+      .attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'));
+    if (o.endLabels) {
+      const labs = ends.map(e => ({e, y: y(e.p.y)})).sort((a, b) => a.y - b.y);
+      for (let i = 1; i < labs.length; i++) labs[i].y = Math.max(labs[i].y, labs[i - 1].y + 14);
+      labs.forEach(lb => svg.append('text').attr('x', x(lb.e.p.x) + 6).attr('y', lb.y).attr('dy', '0.32em')
+        .style('fill', lb.e.l.color).text(lb.e.l.name + ' ' + o.fy(lb.e.p.y)));
+    }
+    const tip = makeTip(el);
+    const allX = Array.from(new Set(xs.map(d => +d))).sort((a, b) => a - b);
+    const dots = lines.map(l => svg.append('circle').attr('r', 4).style('fill', l.color).style('display', 'none'));
+    const maps = lines.map(l => new Map(l.pts.map(p => [+p.x, p.y])));
+    svg.append('rect').attr('x', ml).attr('y', mt).attr('width', Math.max(0, W - mr - ml)).attr('height', H - mt - mb)
+      .attr('fill', 'transparent')
+      .on('mousemove', ev => {
+        const [px] = d3.pointer(ev);
+        const xv = allX[d3.bisectCenter(allX, +x.invert(px))];
+        const rows = [];
+        lines.forEach((l, j) => {
+          const v = maps[j].get(xv);
+          if (v == null) { dots[j].style('display', 'none'); return; }
+          dots[j].style('display', null).attr('cx', x(new Date(xv))).attr('cy', y(v));
+          rows.push({color: lines.length > 1 ? l.color : null, text: (lines.length > 1 ? l.name + '  ' : '') + o.ft(v)});
+        });
+        const r = el.getBoundingClientRect();
+        tip.show(ev.clientX - r.left, ev.clientY - r.top, dayFmt(new Date(xv)), rows);
+      })
+      .on('mouseleave', () => { tip.hide(); dots.forEach(d => d.style('display', 'none')); });
+  }
+
+  const MOVE_KEYS = [
+    {k: 'savings', name: 'Risparmio', color: C[0]}, {k: 'oneoff', name: 'Una tantum', color: C[4]},
+    {k: 'market', name: 'Mercati', color: C[1]}, {k: 'fx', name: 'Cambi', color: C[2]}
+  ];
+
+  function movesChart(el, rows) {
+    const keys = MOVE_KEYS;
+    const data = rows.map(r => ({m: r.month, savings: N(r.savings_regular), oneoff: N(r.oneoff_net),
+      market: N(r.market), fx: N(r.fx) + N(r.adjustments)}));
+    const H = 240, mt = 10, mb = 24;
+    const {svg, W} = newSvg(el, H);
+    const series = d3.stack().keys(keys.map(k => k.k)).offset(d3.stackOffsetDiverging)(data);
+    const lo = d3.min(series, s => d3.min(s, d => d[0])), hi = d3.max(series, s => d3.max(s, d => d[1]));
+    const y = d3.scaleLinear([Math.min(0, lo), Math.max(0, hi)], [H - mb, mt]).nice(5);
+    const ml = d3.max(y.ticks(5), t => textWidth(svg, big(t))) + 10, mr = 8;
+    const x = d3.scaleBand(data.map(d => d.m), [ml, W - mr]).padding(0.3);
+    yAxis(svg, y, ml, W, mr, big, 5);
+    svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-axis)');
+    const bw = Math.min(32, x.bandwidth());
+    series.forEach((s, i) => svg.append('g').selectAll('rect').data(s).join('rect')
+      .attr('x', d => x(d.data.m) + (x.bandwidth() - bw) / 2).attr('width', bw)
+      .attr('y', d => y(Math.max(d[0], d[1]))).attr('height', d => Math.abs(y(d[0]) - y(d[1])))
+      .attr('rx', 3).style('fill', keys[i].color));
+    const step = x.bandwidth() < 22 ? 2 : 1;
+    data.forEach((d, i) => {
+      if ((data.length - 1 - i) % step) return;
+      svg.append('text').attr('x', x(d.m) + x.bandwidth() / 2).attr('y', H - 6).attr('text-anchor', 'middle').text(uf('%b')(parse(d.m)));
+    });
+    const tip = makeTip(el);
+    svg.append('g').selectAll('rect').data(data).join('rect')
+      .attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', mt).attr('height', H - mt - mb).attr('fill', 'transparent')
+      .on('mousemove', (ev, d) => {
+        const r = el.getBoundingClientRect();
+        const lines = keys.map(k => ({color: k.color, text: k.name + '  ' + signed(d[k.k])}));
+        lines.push({text: 'Variazione  ' + signed(keys.reduce((s, k) => s + d[k.k], 0))});
+        tip.show(ev.clientX - r.left, ev.clientY - r.top, dayFmt(parse(d.m)), lines);
+      })
+      .on('mouseleave', () => tip.hide());
+  }
+
+  function groupedBars(el, rows) {
+    const keys = [{k: 'income', name: 'Entrate', color: C[0]}, {k: 'spending', name: 'Uscite', color: C[1]}];
+    const H = 190, mt = 10, mb = 24;
+    const {svg, W} = newSvg(el, H);
+    const y = d3.scaleLinear([0, d3.max(rows, r => Math.max(N(r.income), N(r.spending)))], [H - mb, mt]).nice(4);
+    const ml = d3.max(y.ticks(4), t => textWidth(svg, big(t))) + 10, mr = 8;
+    const x = d3.scaleBand(rows.map(r => r.month), [ml, W - mr]).padding(0.25);
+    const xs = d3.scaleBand(keys.map(k => k.k), [0, x.bandwidth()]).padding(0.1);
+    yAxis(svg, y, ml, W, mr, big, 4);
+    rows.forEach(r => keys.forEach(k => {
+      const v = N(r[k.k]);
+      svg.append('rect').attr('x', x(r.month) + xs(k.k)).attr('width', xs.bandwidth())
+        .attr('y', y(v)).attr('height', Math.max(0, y(0) - y(v))).attr('rx', 2).style('fill', k.color);
+    }));
+    const step = Math.ceil(rows.length / Math.max(2, Math.floor((W - ml - mr) / 52)));
+    rows.forEach((r, i) => {
+      if ((rows.length - 1 - i) % step) return;
+      svg.append('text').attr('x', x(r.month) + x.bandwidth() / 2).attr('y', H - 6).attr('text-anchor', 'middle').text(uf('%b ’%y')(parse(r.month)));
+    });
+    const tip = makeTip(el);
+    svg.append('g').selectAll('rect').data(rows).join('rect')
+      .attr('x', r => x(r.month)).attr('width', x.bandwidth()).attr('y', mt).attr('height', H - mt - mb).attr('fill', 'transparent')
+      .on('mousemove', (ev, r) => {
+        const b = el.getBoundingClientRect();
+        tip.show(ev.clientX - b.left, ev.clientY - b.top, monFmt(parse(r.month)), [
+          {color: C[0], text: 'Entrate  ' + money(N(r.income))}, {color: C[1], text: 'Uscite  ' + money(N(r.spending))},
+          {text: 'Risparmio  ' + signed(N(r.savings))}]);
+      })
+      .on('mouseleave', () => tip.hide());
+  }
+
+  function budgetChart(el, rows) {
+    const data = rows.slice().sort((a, b) => b.budget - a.budget);
+    const H = Math.max(160, data.length * 30 + 20);
+    const {svg, W} = newSvg(el, H);
+    const ml = d3.max(data, d => textWidth(svg, d.category)) + 12;
+    const lab = d => money(d.spent) + ' / ' + money(d.budget);
+    const mr = d3.max(data, d => textWidth(svg, lab(d))) + 14;
+    const hi = Math.max(1.2, d3.max(data, d => d.share));
+    const x = d3.scaleLinear([0, hi], [ml, W - mr]);
+    const y = d3.scaleBand(data.map(d => d.category), [10, H - 10]).padding(0.3);
+    const bh = Math.min(18, y.bandwidth());
+    data.forEach(d => {
+      const cy = y(d.category) + y.bandwidth() / 2;
+      svg.append('text').attr('x', ml - 8).attr('y', cy).attr('dy', '0.32em').attr('text-anchor', 'end').text(d.category);
+      svg.append('rect').attr('x', ml).attr('y', cy - bh / 2).attr('height', bh).attr('width', x(1) - ml).attr('rx', 3)
+        .style('fill', 'var(--cds-chart-grid)');
+      const over = d.share > 1, ahead = d.share > d.elapsed + 0.15;
+      svg.append('rect').attr('x', ml).attr('y', cy - bh / 2).attr('height', bh).attr('width', Math.max(0, x(Math.min(d.share, hi)) - ml)).attr('rx', 3)
+        .style('fill', over ? 'var(--cds-chart-status-critical)' : ahead ? C[1] : C[0]);
+      svg.append('text').attr('x', Math.max(x(Math.min(d.share, hi)), x(1)) + 6).attr('y', cy).attr('dy', '0.32em').text(lab(d));
+    });
+    const ex = x(data.length ? data[0].elapsed : 0);
+    svg.append('line').attr('x1', ex).attr('x2', ex).attr('y1', 4).attr('y2', H - 4)
+      .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 3');
+    const tip = makeTip(el);
+    svg.append('g').selectAll('rect').data(data).join('rect')
+      .attr('x', 0).attr('width', W).attr('y', d => y(d.category)).attr('height', y.bandwidth()).attr('fill', 'transparent')
+      .on('mousemove', (ev, d) => {
+        const r = el.getBoundingClientRect();
+        tip.show(ev.clientX - r.left, ev.clientY - r.top, d.category, [
+          {text: 'Speso  ' + money2(d.spent) + ' (' + pct0(d.share) + ')'}, {text: 'Budget  ' + money(d.budget)},
+          d.spent > d.budget ? {text: 'Sforato di  ' + money(d.spent - d.budget)} : {text: 'Restano  ' + money(d.budget - d.spent)}]);
+      })
+      .on('mouseleave', () => tip.hide());
+  }
+
+  function ruleChart(el, r) {
+    const H = 64;
+    const {svg, W} = newSvg(el, H);
+    const segs = [{k: 'needs', name: 'Essenziali', v: Math.max(0, r.needs), color: C[0]},
+                  {k: 'wants', name: 'Stile di vita', v: Math.max(0, r.wants), color: C[1]},
+                  {k: 'saved', name: 'Risparmio', v: Math.max(0, r.saved), color: C[2]}];
+    const tot = d3.sum(segs, s => s.v) || 1;
+    const x = d3.scaleLinear([0, Math.max(1, tot)], [0, W]);
+    let acc = 0;
+    segs.forEach(s => {
+      svg.append('rect').attr('x', x(acc) + 1).attr('y', 14).attr('width', Math.max(0, x(s.v) - 2)).attr('height', 24).attr('rx', 3).style('fill', s.color);
+      if (x(s.v) > 44) svg.append('text').attr('x', x(acc) + 6).attr('y', 30).style('fill', 'var(--color-bg)').text(pct0(s.v));
+      acc += s.v;
+    });
+    [[0.5, '50'], [0.8, '80']].forEach(([v, t]) => {
+      svg.append('line').attr('x1', x(v)).attr('x2', x(v)).attr('y1', 8).attr('y2', 44).style('stroke', 'var(--color-fg)').attr('stroke-width', 2);
+      svg.append('text').attr('x', x(v)).attr('y', 58).attr('text-anchor', 'middle').text(t + '%');
+    });
+  }
+
+  function cushionChart(el, c) {
+    const H = 56, [lo, hi] = CFG.cushionTarget;
+    const {svg, W} = newSvg(el, H);
+    const max = Math.max(hi + 2, Math.ceil(c.months + 1));
+    const x = d3.scaleLinear([0, max], [8, W - 8]);
+    svg.append('rect').attr('x', x(0)).attr('y', 18).attr('width', x(max) - x(0)).attr('height', 12).attr('rx', 6).style('fill', 'var(--cds-chart-grid)');
+    svg.append('rect').attr('x', x(lo)).attr('y', 18).attr('width', x(hi) - x(lo)).attr('height', 12).style('fill', 'var(--cds-chart-muted)');
+    svg.append('rect').attr('x', x(0)).attr('y', 21).attr('width', Math.max(0, x(Math.min(c.months, max)) - x(0))).attr('height', 6).attr('rx', 3).style('fill', C[0]);
+    svg.append('circle').attr('cx', x(Math.min(c.months, max))).attr('cy', 24).attr('r', 6).style('fill', C[0]);
+    [0, lo, hi, max].forEach(t => svg.append('text').attr('x', x(t)).attr('y', 48).attr('text-anchor', 'middle').text(t));
+  }
+
+  function catChart(el, rows) {
+    const data = rows.slice().sort((a, b) => b.amount - a.amount);
+    const H = Math.max(200, data.length * 30 + 20);
+    const {svg, W} = newSvg(el, H);
+    const ml = d3.max(data, d => textWidth(svg, d.category)) + 12;
+    const mr = d3.max(data, d => textWidth(svg, money(d.amount))) + 14;
+    const x = d3.scaleLinear([0, d3.max(data, d => Math.max(d.amount, d.median)) || 1], [ml, W - mr]);
+    const y = d3.scaleBand(data.map(d => d.category), [10, H - 10]).padding(0.3);
+    const bh = Math.min(20, y.bandwidth());
+    data.forEach(d => {
+      const cy = y(d.category) + y.bandwidth() / 2;
+      svg.append('text').attr('x', ml - 8).attr('y', cy).attr('dy', '0.32em').attr('text-anchor', 'end').text(d.category);
+      svg.append('rect').attr('x', ml).attr('y', cy - bh / 2).attr('height', bh).attr('width', Math.max(0, x(d.amount) - ml)).attr('rx', 3)
+        .style('fill', d.above ? C[0] : 'var(--cds-chart-muted)');
+      svg.append('line').attr('x1', x(d.median)).attr('x2', x(d.median)).attr('y1', cy - bh / 2 - 4).attr('y2', cy + bh / 2 + 4)
+        .style('stroke', 'var(--color-fg)').attr('stroke-width', 2);
+      svg.append('text').attr('x', Math.max(x(d.amount), x(d.median)) + 6).attr('y', cy).attr('dy', '0.32em').text(money(d.amount));
+    });
+    const tip = makeTip(el);
+    svg.append('g').selectAll('rect').data(data).join('rect')
+      .attr('x', 0).attr('width', W).attr('y', d => y(d.category)).attr('height', y.bandwidth()).attr('fill', 'transparent')
+      .on('mousemove', (ev, d) => {
+        const r = el.getBoundingClientRect();
+        tip.show(ev.clientX - r.left, ev.clientY - r.top, d.category, [
+          {text: cap(monLong(parse(d.month))) + '  ' + money(d.amount)}, {text: 'Di solito  ' + money(d.median)},
+          {text: 'Differenza  ' + signed(d.amount - d.median)}]);
+      })
+      .on('mouseleave', () => tip.hide());
+  }
+
+  function allocChart(el, rows) {
+    const data = rows.map(r => ({c: r.commodity + ' · ' + r.person, v: N(r.value)})).sort((a, b) => b.v - a.v);
+    const tot = d3.sum(data, d => d.v);
+    const H = Math.max(140, data.length * 40 + 20);
+    const {svg, W} = newSvg(el, H);
+    const ml = d3.max(data, d => textWidth(svg, d.c)) + 12;
+    const mr = d3.max(data, d => textWidth(svg, money(d.v) + ' · ' + pct1(d.v / tot))) + 12;
+    const x = d3.scaleLinear([0, d3.max(data, d => d.v)], [ml, W - mr]);
+    const y = d3.scaleBand(data.map(d => d.c), [10, H - 10]).padding(0.35);
+    data.forEach(d => {
+      svg.append('text').attr('x', ml - 8).attr('y', y(d.c) + y.bandwidth() / 2).attr('dy', '0.32em').attr('text-anchor', 'end').text(d.c);
+      svg.append('rect').attr('x', ml).attr('y', y(d.c)).attr('height', Math.min(32, y.bandwidth())).attr('width', Math.max(0, x(d.v) - ml)).attr('rx', 3).style('fill', C[0]);
+      svg.append('text').attr('x', x(d.v) + 6).attr('y', y(d.c) + y.bandwidth() / 2).attr('dy', '0.32em').text(money(d.v) + ' · ' + pct1(d.v / tot));
+    });
+  }
+
+  function fillTable(table, rows, keyCols, cells) {
+    const tb = table.querySelector('tbody');
+    tb.innerHTML = '';
+    rows.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.setAttribute('data-key', keyCols.map(k => encodeURIComponent(r[k])).join(','));
+      cells.forEach(c => {
+        const td = document.createElement('td');
+        if (c.num) td.className = 'num';
+        if (c.cls) td.className = (td.className + ' ' + c.cls(r)).trim();
+        td.textContent = c.f(r);
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  // ── draw on every data change ───────────────────────────────────────────
+  dash.onData(() => {
+    const st = id => dash.data(id);
+    const all = Array.from(document.querySelectorAll('.hf [data-source]'));
+    const clearSkel = id => all.filter(e => e.getAttribute('data-source') === id).forEach(e => e.classList.remove('dash-skeleton'));
+    const fillMarks = (id, fmt) => {
+      const d = st(id);
+      if (d.status === 'ok' && d.data.length) {
+        all.filter(e => e.getAttribute('data-source') === id && e.hasAttribute('data-field') && e.tagName !== 'TH').forEach(e => {
+          const f = e.getAttribute('data-field');
+          const v = d.data[Number(e.getAttribute('data-row') || 0)][f];
+          const ff = FMT_AS[e.getAttribute('data-fmt')] || fmt[f];
+          e.textContent = ff ? ff(v) : String(v);
+        });
+        clearSkel(id);
+      } else if (d.status === 'error') {
+        all.filter(e => e.getAttribute('data-source') === id && e.hasAttribute('data-field')).forEach(e => { e.textContent = '—'; });
+        clearSkel(id);
+      }
+      return d;
+    };
+    const chart = (id, src, draw) => {
+      const el = $(id);
+      if (!el) return;
+      const d = st(src);
+      if (d.status === 'ok') { draw(el, d.data); clearSkel(src); }
+      else if (d.status === 'error') { failed(el); clearSkel(src); }
+      else el.innerHTML = '';
+    };
+
+    const people = st('people');
+    const nPeople = people.status === 'ok' ? new Set(people.data.map(r => r.person)).size : 1;
+    document.querySelectorAll('.hf .verb-saved').forEach(e => { e.textContent = CFG.text.savedVerb(nPeople); });
+    document.querySelectorAll('.hf .verb-over').forEach(e => { e.textContent = CFG.text.overVerb(nPeople); });
+    const kp = st('kpis');
+    if (kp.status === 'ok' && kp.data.length && $('tk-saved')) {
+      const over = kp.data[0].deficit_month > 0;
+      $('tk-saved').hidden = over;
+      $('tk-over').hidden = !over;
+    }
+    if (kp.status === 'ok' && kp.data.length && $('month-running')) {
+      const done = kp.data[0].elapsed >= 1;
+      $('month-running').hidden = done;
+      $('month-done').hidden = !done;
+    }
+    fillMarks('kpis', KPI_FMT);
+    fillMarks('checks', {unexplained_max: money});
+    fillMarks('month_budget', {month: v => monOnly(parse(v))});
+    fillMarks('cushion', {months: dec1, liquid: money, essential_avg: money});
+    fillMarks('recurring_totals', {monthly: money, yearly: money});
+    fillMarks('cat_vs_median', {month: v => monOnly(parse(v))});
+    const sm = fillMarks('shared_month', {month: v => monOnly(parse(v)), settle: money});
+    if (sm.status === 'ok' && sm.data.length && $('settle-owe')) {
+      const even = sm.data[0].settle < 1;
+      $('settle-owe').hidden = even;
+      $('settle-even').hidden = !even;
+    }
+
+    // this month
+    legend($('budget-legend'), [{name: 'In linea', color: C[0]}, {name: 'Più in fretta del previsto', color: C[1]},
+      {name: 'Budget superato', color: 'var(--cds-chart-status-critical)'}, {name: 'Parte di mese passata', color: 'var(--cds-chart-reference)', tick: true}]);
+    chart('budget-chart', 'month_budget', budgetChart);
+    legend($('rule-legend'), [{name: 'Essenziali', color: C[0]}, {name: 'Stile di vita', color: C[1]}, {name: 'Risparmio', color: C[2]}]);
+    chart('rule-chart', 'rule', (el, d) => ruleChart(el, d[0]));
+    chart('cushion-chart', 'cushion', (el, d) => cushionChart(el, d[0]));
+
+    // cash flow and net worth
+    chart('is-chart', 'monthly', (el, rows) => { legend($('is-legend'), [{name: 'Entrate', color: C[0]}, {name: 'Uscite', color: C[1]}]); groupedBars(el, rows.slice(-16)); });
+    chart('sr-chart', 'monthly', (el, rows) => lineChart(el, [{name: 'Tasso di risparmio', color: C[0],
+      pts: rows.filter(r => r.savings_rate_t12m !== '' && r.savings_rate_t12m != null).map(r => ({x: parse(r.month), y: N(r.savings_rate_t12m)}))}],
+      {fy: pct0, ft: pct1, height: 190, empty: CFG.text.needMonths}));
+    chart('nw-chart', 'monthly', (el, rows) => lineChart(el, [{name: 'Patrimonio', color: C[0], pts: rows.map(r => ({x: parse(r.month), y: N(r.net_worth)}))}], {fy: big, ft: money}));
+    chart('mv-chart', 'monthly', (el, rows) => { legend($('mv-legend'), MOVE_KEYS.map(k => ({name: k.name, color: k.color}))); movesChart(el, rows.slice(-12)); });
+    chart('mk-chart', 'monthly', (el, rows) => lineChart(el, [{name: 'Guadagno', color: C[1], pts: rows.map(r => ({x: parse(r.month), y: N(r.market_cum)}))}], {fy: big, ft: signed, zero: true, height: 190}));
+    chart('pp-chart', 'people', (el, rows) => {
+      const names = Array.from(new Set(rows.map(r => r.person)));
+      lineChart(el, names.map((p, i) => ({name: p, color: C[(i + 1) % C.length],
+        pts: rows.filter(r => r.person === p).map(r => ({x: parse(r.month), y: N(r.net_worth)}))})), {fy: big, ft: money, endLabels: true});
+    });
+    chart('cat-chart', 'cat_vs_median', (el, rows) => {
+      legend($('cat-legend'), [{name: 'Sopra il solito', color: C[0]}, {name: 'Nella norma', color: 'var(--cds-chart-muted)'},
+        {name: 'Spesa abituale', color: 'var(--color-fg)', tick: true}]);
+      catChart(el, rows);
+    });
+    chart('alloc-chart', 'holdings', (el, rows) => allocChart(el, rows.filter(r => r.kind === 'investment')));
+
+    // tables
+    const table = (id, src, key, cells, sort) => {
+      const t = $(id);
+      if (!t) return;
+      const d = st(src);
+      if (d.status === 'ok') { fillTable(t, sort ? d.data.slice().sort(sort) : d.data, key, cells); clearSkel(src); }
+      else t.querySelector('tbody').innerHTML = '';
+    };
+    const T = CFG.text;
+    table('recurring-table', 'recurring', ['name'], [
+      {f: r => r.name}, {f: r => r.category}, {f: r => r.person}, {f: r => T.freq[r.frequency] || r.frequency},
+      {num: true, f: r => money2(N(r.amount))}, {num: true, f: r => r.status === 'stopped' ? '—' : money2(N(r.monthly_cost))},
+      {cls: r => 'st-' + r.status, f: r => (T.status[r.status] || r.status) +
+        (r.status === 'increased' ? ' (' + T.was + ' ' + money2(N(r.previous_amount)) + ')' : '')}
+    ]);
+    table('shared-table', 'shared_month', ['person'], [
+      {f: r => r.person}, {num: true, f: r => money(r.paid)}, {num: true, f: r => money(r.share)},
+      {num: true, f: r => signed(r.moved)}, {num: true, f: r => signed(r.diff)}
+    ]);
+    table('holdings-table', 'holdings', ['account', 'commodity'], [
+      {f: r => r.person}, {f: r => r.institution.replace(/-/g, ' ')}, {cls: () => 'ccy', f: r => r.commodity}, {f: r => T.kind[r.kind] || r.kind},
+      {num: true, f: r => minus(r.kind === 'investment' ? units3(r.units) : NF({minimumFractionDigits: 2, maximumFractionDigits: 2}).format(N(r.units)))},
+      {num: true, f: r => money(N(r.value))}
+    ], (a, b) => N(b.value) - N(a.value));
+    const hd = st('holdings');
+    if ($('holdings-table') && hd.status === 'ok') {
+      $('holdings-table').classList.toggle('one-ccy', hd.data.every(r => r.commodity === CFG.currency));
+    }
+    table('fire-table', 'fire', ['swr'], [
+      {f: r => pctR(N(r.swr))}, {num: true, f: r => big(N(r.fire_number))}, {num: true, f: r => pct1(N(r.progress))},
+      {num: true, f: r => dec1(r.years_3)}, {num: true, f: r => dec1(r.years_5)}, {num: true, f: r => dec1(r.years_7)}
+    ]);
+    table('flags-table', 'flags', ['id'], [
+      {f: r => dayFmt(parse(r.date))}, {f: r => r.where}, {f: r => r.what},
+      {num: true, f: r => minus(new Intl.NumberFormat(CFG.locale, {style: 'currency', currency: r.currency || CFG.currency}).format(N(r.amount)))},
+      {f: r => r.kind === 'transfer' ? T.pendingTransfer :
+        String(r.booked_as || '').replace(/^Income:/, T.income + ':').replace(/:/g, ' · ').replace(/-/g, ' ')}
+    ]);
+  });
+})();
+</script>

@@ -1,0 +1,175 @@
+date,kind,symbol,quantity,amount,currency,description
+2024-01-04,deposit,,,700.00,EUR,Deposit
+2024-01-04,buy,SWDA,6.3348,-560.00,EUR,Monthly plan
+2024-01-04,buy,EIMI,4.5868,-140.00,EUR,Monthly plan
+2024-01-04,fee,,,-1.25,EUR,Commission
+2024-02-04,deposit,,,700.00,EUR,Deposit
+2024-02-04,buy,SWDA,6.2753,-560.00,EUR,Monthly plan
+2024-02-04,buy,EIMI,4.5231,-140.00,EUR,Monthly plan
+2024-02-04,fee,,,-1.25,EUR,Commission
+2024-03-04,deposit,,,700.00,EUR,Deposit
+2024-03-04,buy,SWDA,6.2038,-560.00,EUR,Monthly plan
+2024-03-04,buy,EIMI,4.4912,-140.00,EUR,Monthly plan
+2024-03-04,fee,,,-1.25,EUR,Commission
+2024-03-31,position,SWDA,148.8139,,EUR,
+2024-03-31,position,EIMI,133.6011,,EUR,
+2024-03-31,cash,,,146.25,EUR,
+2024-04-04,deposit,,,700.00,EUR,Deposit
+2024-04-04,buy,SWDA,6.0837,-560.00,EUR,Monthly plan
+2024-04-04,buy,EIMI,4.4351,-140.00,EUR,Monthly plan
+2024-04-04,fee,,,-1.25,EUR,Commission
+2024-05-04,deposit,,,700.00,EUR,Deposit
+2024-05-04,buy,SWDA,6.1177,-560.00,EUR,Monthly plan
+2024-05-04,buy,EIMI,4.5679,-140.00,EUR,Monthly plan
+2024-05-04,fee,,,-1.25,EUR,Commission
+2024-06-04,deposit,,,700.00,EUR,Deposit
+2024-06-04,buy,SWDA,6.2176,-560.00,EUR,Monthly plan
+2024-06-04,buy,EIMI,4.7326,-140.00,EUR,Monthly plan
+2024-06-04,fee,,,-1.25,EUR,Commission
+2024-06-30,position,SWDA,167.2329,,EUR,
+2024-06-30,position,EIMI,147.3367,,EUR,
+2024-06-30,cash,,,142.50,EUR,
+2024-07-04,deposit,,,700.00,EUR,Deposit
+2024-07-04,buy,SWDA,6.1691,-560.00,EUR,Monthly plan
+2024-07-04,buy,EIMI,4.7214,-140.00,EUR,Monthly plan
+2024-07-04,fee,,,-1.25,EUR,Commission
+2024-08-04,deposit,,,700.00,EUR,Deposit
+2024-08-04,buy,SWDA,6.2428,-560.00,EUR,Monthly plan
+2024-08-04,buy,EIMI,4.8833,-140.00,EUR,Monthly plan
+2024-08-04,fee,,,-1.25,EUR,Commission
+2024-09-04,deposit,,,700.00,EUR,Deposit
+2024-09-04,buy,SWDA,6.4870,-560.00,EUR,Monthly plan
+2024-09-04,buy,EIMI,5.1168,-140.00,EUR,Monthly plan
+2024-09-04,fee,,,-1.25,EUR,Commission
+2024-09-30,position,SWDA,186.1318,,EUR,
+2024-09-30,position,EIMI,162.0582,,EUR,
+2024-09-30,cash,,,138.75,EUR,
+2024-10-04,deposit,,,700.00,EUR,Deposit
+2024-10-04,buy,SWDA,6.5560,-560.00,EUR,Monthly plan
+2024-10-04,buy,EIMI,5.1248,-140.00,EUR,Monthly plan
+2024-10-04,fee,,,-1.25,EUR,Commission
+2024-11-04,deposit,,,700.00,EUR,Deposit
+2024-11-04,buy,SWDA,6.3624,-560.00,EUR,Monthly plan
+2024-11-04,buy,EIMI,5.0133,-140.00,EUR,Monthly plan
+2024-11-04,fee,,,-1.25,EUR,Commission
+2024-12-04,deposit,,,700.00,EUR,Deposit
+2024-12-04,buy,SWDA,6.3148,-560.00,EUR,Monthly plan
+2024-12-04,buy,EIMI,4.9901,-140.00,EUR,Monthly plan
+2024-12-04,fee,,,-1.25,EUR,Commission
+2024-12-31,position,SWDA,205.3650,,EUR,
+2024-12-31,position,EIMI,177.1864,,EUR,
+2024-12-31,cash,,,135.00,EUR,
+2025-01-04,deposit,,,800.00,EUR,Deposit
+2025-01-04,buy,SWDA,7.4876,-640.00,EUR,Monthly plan
+2025-01-04,buy,EIMI,5.9839,-160.00,EUR,Monthly plan
+2025-01-04,fee,,,-1.25,EUR,Commission
+2025-02-04,deposit,,,800.00,EUR,Deposit
+2025-02-04,buy,SWDA,7.4390,-640.00,EUR,Monthly plan
+2025-02-04,buy,EIMI,6.1634,-160.00,EUR,Monthly plan
+2025-02-04,fee,,,-1.25,EUR,Commission
+2025-03-04,deposit,,,800.00,EUR,Deposit
+2025-03-04,buy,SWDA,7.1589,-640.00,EUR,Monthly plan
+2025-03-04,buy,EIMI,6.2178,-160.00,EUR,Monthly plan
+2025-03-04,fee,,,-1.25,EUR,Commission
+2025-03-31,position,SWDA,227.4505,,EUR,
+2025-03-31,position,EIMI,195.5515,,EUR,
+2025-03-31,cash,,,131.25,EUR,
+2025-04-04,deposit,,,800.00,EUR,Deposit
+2025-04-04,buy,SWDA,7.3564,-640.00,EUR,Monthly plan
+2025-04-04,buy,EIMI,6.6085,-160.00,EUR,Monthly plan
+2025-04-04,fee,,,-1.25,EUR,Commission
+2025-05-04,deposit,,,800.00,EUR,Deposit
+2025-05-04,buy,SWDA,7.5643,-640.00,EUR,Monthly plan
+2025-05-04,buy,EIMI,6.8794,-160.00,EUR,Monthly plan
+2025-05-04,fee,,,-1.25,EUR,Commission
+2025-06-04,deposit,,,800.00,EUR,Deposit
+2025-06-04,buy,SWDA,7.3116,-640.00,EUR,Monthly plan
+2025-06-04,buy,EIMI,6.6029,-160.00,EUR,Monthly plan
+2025-06-04,fee,,,-1.25,EUR,Commission
+2025-06-30,position,SWDA,249.6828,,EUR,
+2025-06-30,position,EIMI,215.6423,,EUR,
+2025-06-30,cash,,,127.50,EUR,
+2025-07-04,deposit,,,800.00,EUR,Deposit
+2025-07-04,buy,SWDA,7.1361,-640.00,EUR,Monthly plan
+2025-07-04,buy,EIMI,6.3002,-160.00,EUR,Monthly plan
+2025-07-04,fee,,,-1.25,EUR,Commission
+2025-08-04,deposit,,,800.00,EUR,Deposit
+2025-08-04,buy,SWDA,7.1386,-640.00,EUR,Monthly plan
+2025-08-04,buy,EIMI,6.2324,-160.00,EUR,Monthly plan
+2025-08-04,fee,,,-1.25,EUR,Commission
+2025-09-04,deposit,,,800.00,EUR,Deposit
+2025-09-04,buy,SWDA,6.9312,-640.00,EUR,Monthly plan
+2025-09-04,buy,EIMI,6.1506,-160.00,EUR,Monthly plan
+2025-09-04,fee,,,-1.25,EUR,Commission
+2025-09-30,position,SWDA,270.8887,,EUR,
+2025-09-30,position,EIMI,234.3255,,EUR,
+2025-09-30,cash,,,123.75,EUR,
+2025-10-04,deposit,,,800.00,EUR,Deposit
+2025-10-04,buy,SWDA,6.7272,-640.00,EUR,Monthly plan
+2025-10-04,buy,EIMI,6.0292,-160.00,EUR,Monthly plan
+2025-10-04,fee,,,-1.25,EUR,Commission
+2025-11-04,deposit,,,800.00,EUR,Deposit
+2025-11-04,buy,SWDA,6.6508,-640.00,EUR,Monthly plan
+2025-11-04,buy,EIMI,5.8921,-160.00,EUR,Monthly plan
+2025-11-04,fee,,,-1.25,EUR,Commission
+2025-12-04,deposit,,,800.00,EUR,Deposit
+2025-12-04,buy,SWDA,6.3862,-640.00,EUR,Monthly plan
+2025-12-04,buy,EIMI,5.5774,-160.00,EUR,Monthly plan
+2025-12-04,fee,,,-1.25,EUR,Commission
+2025-12-31,position,SWDA,290.6529,,EUR,
+2025-12-31,position,EIMI,251.8242,,EUR,
+2025-12-31,cash,,,120.00,EUR,
+2026-01-04,deposit,,,800.00,EUR,Deposit
+2026-01-04,buy,SWDA,6.1061,-640.00,EUR,Monthly plan
+2026-01-04,buy,EIMI,5.3315,-160.00,EUR,Monthly plan
+2026-01-04,fee,,,-1.25,EUR,Commission
+2026-02-04,deposit,,,800.00,EUR,Deposit
+2026-02-04,buy,SWDA,6.0825,-640.00,EUR,Monthly plan
+2026-02-04,buy,EIMI,5.3885,-160.00,EUR,Monthly plan
+2026-02-04,fee,,,-1.25,EUR,Commission
+2026-02-11,deposit,,,5000.00,EUR,Deposit
+2026-02-11,buy,SWDA,47.5197,-5000.00,EUR,Lump sum
+2026-03-04,deposit,,,800.00,EUR,Deposit
+2026-03-04,buy,SWDA,6.1376,-640.00,EUR,Monthly plan
+2026-03-04,buy,EIMI,5.5077,-160.00,EUR,Monthly plan
+2026-03-04,fee,,,-1.25,EUR,Commission
+2026-03-31,position,SWDA,356.4988,,EUR,
+2026-03-31,position,EIMI,268.0519,,EUR,
+2026-03-31,cash,,,116.25,EUR,
+2026-04-04,deposit,,,800.00,EUR,Deposit
+2026-04-04,buy,SWDA,6.0792,-640.00,EUR,Monthly plan
+2026-04-04,buy,EIMI,5.4468,-160.00,EUR,Monthly plan
+2026-04-04,fee,,,-1.25,EUR,Commission
+2026-05-04,deposit,,,800.00,EUR,Deposit
+2026-05-04,buy,SWDA,6.0257,-640.00,EUR,Monthly plan
+2026-05-04,buy,EIMI,5.3735,-160.00,EUR,Monthly plan
+2026-05-04,fee,,,-1.25,EUR,Commission
+2026-06-04,deposit,,,800.00,EUR,Deposit
+2026-06-04,buy,SWDA,5.8748,-640.00,EUR,Monthly plan
+2026-06-04,buy,EIMI,5.2337,-160.00,EUR,Monthly plan
+2026-06-04,fee,,,-1.25,EUR,Commission
+2026-06-30,position,SWDA,374.4785,,EUR,
+2026-06-30,position,EIMI,284.1059,,EUR,
+2026-06-30,cash,,,112.50,EUR,
+2026-07-04,deposit,,,800.00,EUR,Deposit
+2026-07-04,buy,SWDA,5.7777,-640.00,EUR,Monthly plan
+2026-07-04,buy,EIMI,5.1895,-160.00,EUR,Monthly plan
+2026-07-04,fee,,,-1.25,EUR,Commission
+2026-08-04,deposit,,,800.00,EUR,Deposit
+2026-08-04,buy,SWDA,5.8268,-640.00,EUR,Monthly plan
+2026-08-04,buy,EIMI,5.3779,-160.00,EUR,Monthly plan
+2026-08-04,fee,,,-1.25,EUR,Commission
+2026-09-04,deposit,,,800.00,EUR,Deposit
+2026-09-04,buy,SWDA,5.9045,-640.00,EUR,Monthly plan
+2026-09-04,buy,EIMI,5.6925,-160.00,EUR,Monthly plan
+2026-09-04,fee,,,-1.25,EUR,Commission
+2026-09-30,position,SWDA,391.9875,,EUR,
+2026-09-30,position,EIMI,300.3658,,EUR,
+2026-09-30,cash,,,108.75,EUR,
+2026-10-04,deposit,,,800.00,EUR,Deposit
+2026-10-04,buy,SWDA,5.9559,-640.00,EUR,Monthly plan
+2026-10-04,buy,EIMI,5.9066,-160.00,EUR,Monthly plan
+2026-10-04,fee,,,-1.25,EUR,Commission
+2026-10-21,position,SWDA,397.9434,,EUR,
+2026-10-21,position,EIMI,306.2724,,EUR,
+2026-10-21,cash,,,107.50,EUR,

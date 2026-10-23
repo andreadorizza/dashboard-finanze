@@ -1,0 +1,9 @@
+; Finanze di <nomi>. Entry point: everything else is included from here.
+option "title" "Finanze di <nomi>"
+option "operating_currency" "EUR"
+option "booking_method" "FIFO"
+
+include "accounts.beancount"
+include "opening.beancount"
+include "prices.beancount"
+include "2026.beancount"

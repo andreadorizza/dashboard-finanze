@@ -1,0 +1,9 @@
+;; Balances on the day BEFORE the start date, from each statement's opening balance.
+;; Fill in one line per account, then remove the "; " in front of the entry's lines.
+;; Securities at purchase cost if known:  Assets:Nome:Broker   40 VWCE {110.00 EUR}
+;; Foreign cash with its value:           Assets:Nome:Revolut  500.00 USD @@ 460.00 EUR
+; 2025-12-31 * "Saldi di apertura" "Dagli estratti conto al 31/12/2025"
+;   Assets:Nome:Conto-corrente           0.00 EUR
+;   Assets:Nome:Conto-deposito           0.00 EUR
+;   Liabilities:Nome:Carta-di-credito    0.00 EUR
+;   Equity:Opening-Balances

@@ -1,0 +1,33 @@
+pattern,account,name,tags,direction
+TRADE REPUBLIC|INTERACTIVE BROKERS,Assets:{owner}:Transit,,,out
+Transfer to Marco N26|BONIFICO DA MARCO REVOLUT,Assets:{owner}:Transit,,,
+MARCO B\. QUOTA|Giulia B\. Quota,Assets:{owner}:Transit,Quota affitto,,
+STUDIO LUMEN,Income:{owner}:Stipendio,Studio Lumen (stipendio),,in
+RIMBORSO 730,Income:{owner}:Rimborsi,Rimborso 730,oneoff,in
+CLIENTE ALFA|BETA STUDIO|Northwind,Income:{owner}:Lavoro,,,in
+ACQUIRENTE AUTO,Income:{owner}:Vendite,Vendita auto,oneoff,in
+F24,Liabilities:{owner}:Tasse-da-versare,F24,,out
+AFFITTO,Expenses:Casa:Affitto,Affitto,shared,out
+ESSELUNGA|CONAD|LIDL|CARREFOUR,Expenses:Spesa,,shared,out
+ENEL,Expenses:Bollette:Luce-e-gas,Enel luce,shared,out
+A2A,Expenses:Bollette:Luce-e-gas,A2A gas,shared,out
+FASTWEB,Expenses:Bollette:Internet-e-telefono,Fastweb,shared,out
+ILIAD,Expenses:Bollette:Internet-e-telefono,Iliad,,out
+HO\. MOBILE,Expenses:Bollette:Internet-e-telefono,ho. Mobile,,out
+ATM MILANO,Expenses:Trasporti:Mezzi,Abbonamento ATM,,out
+TRENITALIA|ITALO|RYANAIR|BOOKING\.COM,Expenses:Viaggi,,shared,out
+TELEPASS,Expenses:Trasporti:Auto,Telepass,,out
+ASSICURAZIONE AUTO,Expenses:Trasporti:Auto,Assicurazione auto,,out
+ENI STATION,Expenses:Trasporti:Auto,Benzina,,out
+FARMACIA,Expenses:Salute:Farmacia,,,out
+PALESTRA,Expenses:Salute:Sport,Palestra,,out
+YOGA ONLINE,Expenses:Salute:Sport,Yoga online,,out
+NETFLIX,Expenses:Abbonamenti,Netflix,shared,out
+SPOTIFY,Expenses:Abbonamenti,Spotify,,out
+APPLE\.COM,Expenses:Abbonamenti,iCloud,,out
+CURSOR,Expenses:Abbonamenti,Cursor (lavoro),,out
+BAR |TRATTORIA|PIZZERIA|SUSHI|OSTERIA|CAFFE|RISTORANTE,Expenses:Ristoranti,,,out
+FELTRINELLI|FIORAIO|regali,Expenses:Regali,,,out
+AMAZON|IKEA|ZARA|DECATHLON|MEDIAWORLD,Expenses:Shopping,,,out
+PAYPAL,Expenses:Shopping,,check,out
+ATM WITHDRAWAL|PRELIEVO,Expenses:Contanti,Prelievo contanti,check,out

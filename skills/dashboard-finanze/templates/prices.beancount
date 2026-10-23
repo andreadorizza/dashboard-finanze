@@ -1,0 +1,3 @@
+; Month-end prices and exchange rates in the base currency, one line each, e.g.
+; 2026-01-31 price VWCE 112.40 EUR   ; source: Xetra close
+; 2026-01-31 price USD 0.8612 EUR   ; source: ECB, EUR per 1 USD

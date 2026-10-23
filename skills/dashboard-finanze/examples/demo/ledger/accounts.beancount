@@ -1,0 +1,56 @@
+; Una riga per conto. kind: cash | investment | receivable | debt | tax | pension | property
+2023-12-31 commodity VWCE
+  kind: "security"
+2023-12-31 commodity SWDA
+  kind: "security"
+2023-12-31 commodity EIMI
+  kind: "security"
+2023-12-31 commodity USD
+
+2023-12-31 open Assets:Giulia:Fineco            EUR
+  kind: "cash"
+2023-12-31 open Assets:Giulia:TradeRepublic
+  kind: "investment"
+  name: "Trade Republic"
+2023-12-31 open Assets:Giulia:Deposito-affitto  EUR
+  kind: "receivable"
+  name: "Deposito affitto"
+2023-12-31 open Assets:Giulia:Transit
+2023-12-31 open Assets:Marco:N26                EUR
+  kind: "cash"
+2023-12-31 open Assets:Marco:Revolut            USD
+  kind: "cash"
+2023-12-31 open Assets:Marco:IBKR
+  kind: "investment"
+2023-12-31 open Assets:Marco:Transit
+2023-12-31 open Liabilities:Marco:Tasse-da-versare EUR
+  kind: "tax"
+
+2023-12-31 open Income:Giulia:Stipendio
+2023-12-31 open Income:Giulia:Rimborsi
+2023-12-31 open Income:Giulia:Interessi
+2023-12-31 open Income:Giulia:Altro
+2023-12-31 open Income:Marco:Lavoro
+2023-12-31 open Income:Marco:Vendite
+2023-12-31 open Income:Marco:Altro
+
+2023-12-31 open Expenses:Casa:Affitto
+2023-12-31 open Expenses:Spesa
+2023-12-31 open Expenses:Bollette:Luce-e-gas
+2023-12-31 open Expenses:Bollette:Internet-e-telefono
+2023-12-31 open Expenses:Trasporti:Mezzi
+2023-12-31 open Expenses:Trasporti:Treni
+2023-12-31 open Expenses:Trasporti:Auto
+2023-12-31 open Expenses:Salute:Farmacia
+2023-12-31 open Expenses:Salute:Sport
+2023-12-31 open Expenses:Ristoranti
+2023-12-31 open Expenses:Viaggi
+2023-12-31 open Expenses:Shopping
+2023-12-31 open Expenses:Abbonamenti
+2023-12-31 open Expenses:Regali
+2023-12-31 open Expenses:Contanti
+2023-12-31 open Expenses:Commissioni
+2023-12-31 open Expenses:Tasse:Accantonate
+2023-12-31 open Expenses:Da-classificare
+
+2023-12-31 open Equity:Opening-Balances

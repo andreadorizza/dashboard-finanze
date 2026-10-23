@@ -1,0 +1,9 @@
+; Finanze di casa - Giulia e Marco (DATI INVENTATI)
+option "title" "Finanze di casa"
+option "operating_currency" "EUR"
+option "booking_method" "FIFO"
+
+include "accounts.beancount"
+include "prices.beancount"
+include "opening.beancount"
+include "transactions.beancount"

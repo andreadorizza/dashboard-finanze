@@ -1,0 +1,12 @@
+2023-12-31 * "Saldi di apertura" "Dagli estratti conto al 31/12/2023"
+  Assets:Giulia:Fineco                    5500.00 EUR
+  Assets:Giulia:TradeRepublic              300.00 EUR
+  Assets:Giulia:TradeRepublic              120 VWCE {95.00 EUR}
+  Assets:Giulia:Deposito-affitto          2300.00 EUR
+  Assets:Marco:N26                        6000.00 EUR
+  Assets:Marco:Revolut                    1200.00 USD @@ 1086.00 EUR
+  Assets:Marco:IBKR                        150.00 EUR
+  Assets:Marco:IBKR                        130 SWDA {80.00 EUR}
+  Assets:Marco:IBKR                        120 EIMI {28.00 EUR}
+  Liabilities:Marco:Tasse-da-versare     -2100.00 EUR
+  Equity:Opening-Balances

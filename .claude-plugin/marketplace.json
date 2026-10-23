@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dashboard-finanze",
+  "owner": {
+    "name": "Andrea Dorizza",
+    "url": "https://dorizza.com"
+  },
+  "description": "Install dashboard-finanze as a Claude plugin and get every update automatically.",
+  "plugins": [
+    {
+      "name": "dashboard-finanze",
+      "source": "./",
+      "description": "Builds a dashboard of your money from your bank statements. It interviews you, tells you what to download, does the bookkeeping and updates it every month.",
+      "license": "MIT",
+      "keywords": ["finance", "budget", "personal-finance", "dashboard", "beancount", "finanze"]
+    }
+  ]
+}

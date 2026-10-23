@@ -1,0 +1,26 @@
+pattern,account,name,tags,direction
+GIROCONTO|TRADE REPUBLIC|SCALABLE|DIRECTA|INTERACTIVE BROKERS,Assets:{owner}:Transit,,,
+ADDEBITO CARTA DI CREDITO|SALDO CARTA|PAGAMENTO RICEVUTO,Assets:{owner}:Transit,,,
+STIPENDIO|EMOLUMENTI,Income:{owner}:Stipendio,Stipendio,,in
+RIMBORSO 730|RIMBORSO IRPEF,Income:{owner}:Rimborsi,Rimborso 730,oneoff,in
+INTERESSI|INTEREST,Income:{owner}:Interessi,Interessi,,in
+AFFITTO|CANONE LOCAZIONE,Expenses:Casa:Affitto,Affitto,shared,out
+CONDOMINIO,Expenses:Casa:Condominio,Condominio,shared,out
+ESSELUNGA|CONAD|COOP|LIDL|CARREFOUR|EUROSPIN|PAM |IPERAL|TIGROS|DESPAR|SPAR |FAMILA|BENNET|ALDI,Expenses:Spesa,,shared,out
+ENEL|A2A|HERA|IREN|EDISON|ENI PLENITUDE|SORGENIA|OCTOPUS,Expenses:Bollette,,shared,out
+TIM |FASTWEB|VODAFONE|WINDTRE|ILIAD|HO\. MOBILE|VERY MOBILE|KENA|SKY WIFI,Expenses:Bollette,,,out
+TRENITALIA|ITALO|ATM MILANO|ATAC|GTT|RYANAIR|EASYJET|ITA AIRWAYS,Expenses:Trasporti,,,out
+ENI STATION|Q8|TAMOIL|IP STAZIONE|ESSO|TELEPASS|AUTOSTRADE,Expenses:Trasporti,,,out
+FARMACIA|PARAFARMACIA|DENTIST|OTTICA|PALESTRA,Expenses:Salute,,,out
+NETFLIX,Expenses:Abbonamenti,Netflix,shared,out
+SPOTIFY,Expenses:Abbonamenti,Spotify,,out
+DISNEY PLUS|DISNEYPLUS,Expenses:Abbonamenti,Disney+,,out
+AMAZON PRIME|PRIME VIDEO,Expenses:Abbonamenti,Amazon Prime,,out
+APPLE\.COM/BILL,Expenses:Abbonamenti,Apple,,out
+GOOGLE \*|GOOGLE ONE,Expenses:Abbonamenti,Google,,out
+BOOKING\.COM|AIRBNB,Expenses:Viaggi,,shared,out
+BAR |CAFFE|RISTORANTE|TRATTORIA|PIZZERIA|OSTERIA|SUSHI|MCDONALD|BURGER KING|DELIVEROO|GLOVO|JUST EAT,Expenses:Ristoranti,,,out
+AMAZON|ZALANDO|IKEA|DECATHLON|ZARA|H&M|MEDIAWORLD|UNIEURO,Expenses:Shopping,,,out
+PRELIEVO|ATM WITHDRAWAL|BANCOMAT,Expenses:Contanti,Prelievo contanti,check,out
+COMMISSION|CANONE CONTO|IMPOSTA DI BOLLO,Expenses:Commissioni,,,out
+PAYPAL,Expenses:Shopping,,check,out

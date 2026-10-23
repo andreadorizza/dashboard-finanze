@@ -1,0 +1,2 @@
+# One regular expression per line: payee names that look recurring but are not
+# (seasonal shopping, a yearly gift). Lines starting with # are ignored.

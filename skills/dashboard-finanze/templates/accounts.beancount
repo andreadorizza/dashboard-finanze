@@ -1,0 +1,50 @@
+; One `open` per account and category. Replace every "Nome" with the person's first name
+; (one block per person) and keep only the accounts and categories they have.
+; kind: cash | investment | receivable | debt | tax | pension | property
+; name: how the account is shown on the dashboard (optional)
+
+; ── accounts: Assets:<Nome>:<Institution>, Liabilities:<Nome>:<What> ──
+2025-12-31 open Assets:Nome:Conto-corrente        EUR
+  kind: "cash"
+  name: "Conto corrente"
+2025-12-31 open Assets:Nome:Conto-deposito        EUR
+  kind: "cash"
+2025-12-31 open Liabilities:Nome:Carta-di-credito EUR
+  kind: "debt"
+  name: "Carta di credito"
+2025-12-31 open Assets:Nome:Transit
+
+; only if they invest: one commodity per security, the broker as an investment account
+; 2025-12-31 commodity VWCE
+;   kind: "security"
+; 2025-12-31 open Assets:Nome:Broker
+;   kind: "investment"
+; 2025-12-31 open Income:Nome:Capital-Gains
+
+; ── income: Income:<Nome>:<Type> ──
+2025-12-31 open Income:Nome:Stipendio
+2025-12-31 open Income:Nome:Rimborsi
+2025-12-31 open Income:Nome:Interessi
+2025-12-31 open Income:Nome:Altro
+
+; ── categories: Expenses:<Category>[:<Detail>] (the first part is what the dashboard shows) ──
+2025-12-31 open Expenses:Casa:Affitto
+2025-12-31 open Expenses:Casa:Condominio
+2025-12-31 open Expenses:Spesa
+2025-12-31 open Expenses:Bollette
+2025-12-31 open Expenses:Trasporti
+2025-12-31 open Expenses:Salute
+2025-12-31 open Expenses:Ristoranti
+2025-12-31 open Expenses:Viaggi
+2025-12-31 open Expenses:Shopping
+2025-12-31 open Expenses:Abbonamenti
+2025-12-31 open Expenses:Svago
+2025-12-31 open Expenses:Regali
+2025-12-31 open Expenses:Contanti
+2025-12-31 open Expenses:Commissioni
+2025-12-31 open Expenses:Fees
+2025-12-31 open Expenses:Tasse
+2025-12-31 open Expenses:Da-classificare
+
+2025-12-31 open Equity:Opening-Balances
+2025-12-31 open Equity:Revaluation
