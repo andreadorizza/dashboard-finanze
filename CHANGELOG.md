@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 (2026-10-24)
+
+- Statements can come from a folder: on the person's computer (Cowork, Claude Code, desktop app), in Google Drive or another cloud drive through a connector, or in the project's files. Attaching them in the chat still works.
+- The skill asks once where the statements go, offers only places it checked it can read, and records the choice in `piano.md` and `RUNBOOK.md`.
+- Each update reads every file in the folder (rows already imported are skipped), never moves or deletes the person's files, and keeps the ledger beside the statements when it can write there.
+
 ## 1.0.0 (2026-10-23)
 
 - First public release: interview, sections, statements, ledger, dashboard and monthly runbook.

@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "dashboard-finanze",
   "description": "Builds a dashboard of your money from your bank statements. It interviews you, tells you what to download, does the bookkeeping and updates it every month.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Andrea Dorizza",
     "url": "https://dorizza.com"
@@ -10,5 +10,12 @@
   "homepage": "https://github.com/andreadorizza/dashboard-finanze",
   "repository": "https://github.com/andreadorizza/dashboard-finanze",
   "license": "MIT",
-  "keywords": ["finance", "budget", "personal-finance", "dashboard", "beancount", "finanze"]
+  "keywords": [
+    "finance",
+    "budget",
+    "personal-finance",
+    "dashboard",
+    "beancount",
+    "finanze"
+  ]
 }
