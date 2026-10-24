@@ -11,7 +11,7 @@ already gone wrong once. Update it at the end of every session.
 | Ledger | <project files `ledger/` · folder on their computer · Drive folder "…" · zip they attach> |
 | Skill scripts | the `dashboard-finanze` skill, `scripts/` |
 | Dashboard | <link or file name> |
-| Statements | <attached in chat · Drive folder "…"> (not kept after import) |
+| Statements | <folder on their computer "…" · Drive folder "…" · project files · attached in chat> (they can delete them once imported) |
 
 ## The household
 
@@ -33,7 +33,8 @@ Update "Covered up to" after every import.
 1. Copy the ledger where you can run it; `pip install beancount`.
 2. `bean-check main.beancount` passes and `report.py` says unexplained is 0, before touching anything.
 3. Ask for the new statements (table above: from "covered up to" to the end of last
-   month). Walk them through any export they find hard.
+   month), saved where "Statements" says. With a folder, read every file in it: rows
+   already in the ledger are skipped. Walk them through any export they find hard.
 4. Import each file to `out/`, pair transfers, append, set aside taxes if used.
 5. Categorise what the rules missed with the person (batches of at most 8); add rules.
 6. Add month-end prices if they hold securities or other currencies.

@@ -146,11 +146,12 @@ Only then export the dashboard data.
 ## Where the files live
 
 The next session starts from nothing, so the ledger must be somewhere it can read.
-Use the first that works, and write in `RUNBOOK.md` which one:
+Use the first that works, and write in `RUNBOOK.md` which one. If the statements have
+a folder you can write to, put the ledger there, beside them.
 
 1. **Project files**, when this chat is in a Project and you can write to them.
-2. **A folder on their computer**, when the session can reach one (desktop app with a
-   folder connected).
+2. **A folder on their computer**, when the session can reach one (Cowork, Claude Code,
+   the desktop app with a folder connected).
 3. **A Google Drive folder** (or another cloud drive) through a connector that can create
    and update files.
 4. **Last resort**: a zip of the ledger folder, sent to them at the end of every session,

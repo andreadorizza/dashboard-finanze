@@ -101,6 +101,9 @@ Aggiornato: <data>
 ## Periodo
 - Dal <data>
 
+## Dove vanno gli estratti conto
+- <cartella sul computer "…" | cartella Drive "…" | file del progetto | allegati in chat>
+
 ## Categorie
 - Essenziali: ...
 - Stile di vita: ...

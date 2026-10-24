@@ -3,6 +3,43 @@
 The person is often non-technical and has never exported a statement. Make each one a
 small, finished task: one account, clear steps, a check, done.
 
+## Where the statements go
+
+Agree this once, before the first account. Write it in `piano.md`, and later in
+`RUNBOOK.md`. Ask one question, with only the places this session can actually read,
+recommended first:
+
+1. **A folder on their computer**, when you can read their files (Cowork, Claude Code,
+   the desktop app with a folder connected, a local agent). Suggest one folder, such as
+   `Documenti/Conti/Estratti conto`, and ask them to save each download straight into it.
+2. **A Google Drive folder** (or OneDrive, Dropbox...) when a connector for it can find
+   and read their files. Good for couples: both save into the same shared folder. If the
+   connector is there but not connected, say in one line where to connect it (on
+   claude.ai: Customize > Connectors), then wait.
+3. **The project's files**, when the chat is in a Project whose files you can read: they
+   add the statements to the project, and every chat in it sees them.
+4. **Attached here in the chat**: always works. The fallback, and fine for one file.
+
+Check before you offer a place: list the folder or search the drive for it, and read
+one file. Don't recommend a place you couldn't read.
+
+With a folder:
+
+- **One folder for everything.** File names don't matter, since you tell the bank from
+  the content, but suggest `<banca>-<periodo>` so they can find things.
+- **Each update, read every file in it.** The importers skip rows already in the ledger,
+  so a file read twice adds nothing. Note in `RUNBOOK.md` which files you read and up to
+  which date each account is covered.
+- **A connector gives you the text, not the file.** Write it to a file before importing,
+  then compare its row count and totals with what the connector showed: a long file can
+  come back cut. If a connector can't read a format, ask for that file as CSV or in the
+  chat.
+- **Leave their files where they are.** Don't move, rename or delete anything unless
+  they ask: a shared folder can hold files your account can't move (a partner's
+  uploads). Once imported, the statements can go; only the ledger matters. Tell them so.
+- **Keep the ledger next to the statements** when you can write there (a `registro/`
+  folder beside them). See "Where the files live" in `ledger.md`.
+
 ## For each account
 
 1. **Find today's steps.** Search the web ("<banca> esportare movimenti CSV", "<banca>
@@ -18,9 +55,10 @@ small, finished task: one account, clear steps, a check, done.
    (that end date goes to the importer as `--until`). Ask for the **closing balance on
    that day** whenever the file has no running balance: the monthly PDF statement has
    it, or a screenshot of the balance. Without it nothing checks the file.
-5. **Ask them to attach it** here (or drop it in the agreed folder), then **check it at
-   once**: dates covered, number of rows, columns readable, balance present. Tell them
-   in one line ("Ricevuto: 412 movimenti dal 1° gennaio al 30 settembre, con i saldi").
+5. **Ask them to save it in the agreed place** (or attach it here), then read it and
+   **check it at once**: dates covered, number of rows, columns readable, balance
+   present. Tell them in one line ("Trovato: 412 movimenti dal 1° gennaio al 30
+   settembre, con i saldi").
 
 Tell them once that they can remove IBANs or card numbers before sending if they like,
 and that you remove them anyway.

@@ -82,7 +82,7 @@ Vuoi vedere il risultato prima di dare i tuoi estratti conto? Scrivi "fammi vede
 
 1. **Intervista**: una domanda alla volta, per capire a cosa ti serve la dashboard e dove sono i tuoi soldi.
 2. **Disegno**: ti propone le sezioni e tu scegli.
-3. **Estratti conto**: ti dice cosa scaricare da ogni banca, una alla volta.
+3. **Estratti conto**: ti dice cosa scaricare da ogni banca, una alla volta. Li legge da una cartella sul tuo computer o su Google Drive, dai file del progetto o dalla chat.
 4. **Registro**: importa i movimenti in [Beancount](https://beancount.github.io), riconosce i giroconti e controlla ogni saldo con quello della banca.
 5. **Dashboard**: la costruisce e te la spiega in tre righe.
 6. **Ogni mese**: si scrive un `RUNBOOK.md` con tutto quello che ha imparato, così il mese dopo basta "aggiorna ottobre".

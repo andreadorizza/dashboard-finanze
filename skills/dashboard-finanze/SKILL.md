@@ -76,14 +76,22 @@ whether to add or drop anything, and record the choice in `piano.md`.
 
 ## 3. Estratti conto
 
-Read `references/statements.md`. Go through the accounts in `piano.md` one at a time:
+Read `references/statements.md`. First agree **where the statements go**, with one
+question ("Where the statements go" in that file): a folder you can read, on their
+computer or in Google Drive or another cloud drive; the project's files; or attached
+here in the chat. Offer only the places you checked you can read. A folder is best when
+you can reach one: they save every download straight into it, this month and every
+month after. Record the choice in `piano.md`.
+
+Then go through the accounts in `piano.md` one at a time:
 
 1. Look up how that bank exports movements today (web search "<banca> esportare
    movimenti CSV"); banks change their apps, so don't rely on memory.
 2. Give numbered steps, at most six, for the app or site they use: CSV or Excel if
    offered, PDF otherwise; the period from `piano.md`; and the closing balance.
-3. Ask them to attach the file here (or drop it in the folder you agreed on).
-4. Check it right away (dates covered, columns readable, balances present) and say so.
+3. Ask them to save the file in the agreed place, or to attach it here.
+4. Read it and check it right away (dates covered, columns readable, balances present)
+   and say so.
 
 They can stop at any point: build with what is in, and add the rest next time.
 
@@ -125,12 +133,13 @@ the problems already solved. Add to its "Gotchas" every time something goes wron
 
 Make the ledger persist. Read "Where the files live" in `references/ledger.md`: project
 files, a Drive folder, a folder on their computer, or as a last resort a zip they keep.
+When the statements have a folder you can write to, keep the ledger there too.
 
 If you are in a Project, suggest this line for the project instructions (they paste it
 in, you can't): "Prima di parlare di soldi, leggi RUNBOOK.md e seguilo."
 
-Tell them the monthly routine in one sentence: download the new statements, attach
-them, write "aggiorna settembre". Offer a monthly reminder (a scheduled task or a
+Tell them the monthly routine in one sentence: download the new statements, save them
+in their folder (or attach them), write "aggiorna settembre". Offer a monthly reminder (a scheduled task or a
 calendar event, whichever the session can create).
 
 On every later update, follow RUNBOOK.md and end with a short memo: what changed and
